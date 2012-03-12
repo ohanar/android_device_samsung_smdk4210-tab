@@ -20,7 +20,7 @@
 # a new key layout file with the required keyboard configuration.
 #
 
-key 1     BACK
+key 1     ESCAPE
 key 2     1
 key 3     2
 key 4     3
@@ -105,7 +105,7 @@ key 82    NUMPAD_0
 key 83    NUMPAD_DOT
 # key 84 (undefined)
 # key 85 "KEY_ZENKAKUHANKAKU"
-key 86    BACKSLASH
+# key 86 "KEY_102ND"
 key 87    F11
 key 88    F12
 # key 89 "KEY_RO"
@@ -119,7 +119,7 @@ key 96    NUMPAD_ENTER
 key 97    CTRL_RIGHT
 key 98    NUMPAD_DIVIDE
 key 99    SYSRQ
-key 100   ALT_GR
+key 100   ALT_RIGHT
 # key 101 "KEY_LINEFEED"
 key 102   MOVE_HOME
 key 103   DPAD_UP
@@ -141,7 +141,7 @@ key 117   NUMPAD_EQUALS
 key 119   BREAK
 # key 120 (undefined)
 key 121   NUMPAD_COMMA
-# key 122 "KEY_HANGEUL"
+key 122 LANG
 # key 123 "KEY_HANJA"
 # key 124 "KEY_YEN"
 key 125   META_LEFT
@@ -172,7 +172,6 @@ key 139   MENU              WAKE_DROPPED
 key 150   EXPLORER
 # key 151 "KEY_MSDOS"
 # key 152 "KEY_COFFEE"
-key 152 POWER                WAKE
 # key 153 "KEY_DIRECTION"
 # key 154 "KEY_CYCLEWINDOWS"
 key 155   EMAIL
@@ -262,6 +261,40 @@ key 233   HEADSETHOOK
 # key 239 "KEY_KBDILLUMUP"
 # key 240 "KEY_UNKNOWN"
 
+key 256   BUTTON_1
+key 257   BUTTON_2
+key 258   BUTTON_3
+key 259   BUTTON_4
+key 260   BUTTON_5
+key 261   BUTTON_6
+key 262   BUTTON_7
+key 263   BUTTON_8
+key 264   BUTTON_9
+key 265   BUTTON_10
+key 266   BUTTON_11
+key 267   BUTTON_12
+key 268   BUTTON_13
+key 269   BUTTON_14
+key 270   BUTTON_15
+key 271   BUTTON_16
+
+key 288   BUTTON_1
+key 289   BUTTON_2
+key 290   BUTTON_3
+key 291   BUTTON_4
+key 292   BUTTON_5
+key 293   BUTTON_6
+key 294   BUTTON_7
+key 295   BUTTON_8
+key 296   BUTTON_9
+key 297   BUTTON_10
+key 298   BUTTON_11
+key 299   BUTTON_12
+key 300   BUTTON_13
+key 301   BUTTON_14
+key 302   BUTTON_15
+key 303   BUTTON_16
+
 
 key 304   BUTTON_A
 key 305   BUTTON_B
@@ -297,7 +330,6 @@ key 362   GUIDE
 key 366   DVR
 # key 367 "KEY_MHP"
 # key 368 "KEY_LANGUAGE"
-key 368 LANG
 # key 369 "KEY_TITLE"
 # key 370 "KEY_SUBTITLE"
 # key 371 "KEY_ANGLE"
@@ -386,8 +418,18 @@ key 484   B                 FUNCTION
 # key 504 KEY_BRL_DOT8
 
 
-key 704 RECENTAPPS
-key 705 APPLICATION
-key 706 SIP_ON_OFF
-key 707 VOICESEARCH
-key 708 QPANEL_ON_OFF
+# Joystick and game controller axes.
+# Axes that are not mapped will be assigned generic axis numbers by the input subsystem.
+axis 0x00 X
+axis 0x01 Y
+axis 0x02 Z
+axis 0x03 RX
+axis 0x04 RY
+axis 0x05 RZ
+axis 0x06 THROTTLE
+axis 0x07 RUDDER
+axis 0x08 WHEEL
+axis 0x09 GAS
+axis 0x0a BRAKE
+axis 0x10 HAT_X
+axis 0x11 HAT_Y
