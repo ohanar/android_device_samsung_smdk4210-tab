@@ -72,7 +72,8 @@ PRODUCT_PACKAGES += \
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	make_ext4fs \
-	setup_fs
+	setup_fs \
+	static_busybox
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
