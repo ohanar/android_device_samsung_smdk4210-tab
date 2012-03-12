@@ -53,13 +53,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
 
 # Packages
-PRODUCT_PACKAGES := \
+PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
-	librs_jni \
+    librs_jni \
     SamsungServiceMode
 
 # Audio packages
-PRODUCT_PACKAGSE += \
+PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudioutils
 
