@@ -65,9 +65,6 @@ PRODUCT_PACKAGSE += \
     audio.a2dp.default \
     libaudioutils
 
-PRODUCT_COPY_FILES += \
-	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
-
 # Sensors
 PRODUCT_PACKAGES += \
 	lights.s5pc210
@@ -122,6 +119,9 @@ PRODUCT_TAGS += dalvik.gc.type-precise
 # Set default USB interface
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
 	persist.sys.usb.config=mtp
+
+PRODUCT_COPY_FILES += \
+	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Feature live wallpaper
 #PRODUCT_COPY_FILES += \
