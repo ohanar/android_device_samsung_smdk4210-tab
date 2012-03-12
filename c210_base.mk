@@ -19,7 +19,7 @@ $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # This device is hdpi.
-PRODUCT_AAPT_CONFIG := large hdpi sw600dp sw720dp
+PRODUCT_AAPT_CONFIG := xlarge hdpi sw600dp sw720dp
 PRODUCT_AAPT_PREF_CONFIG := hdpi
 PRODUCT_LOCALES += hdpi
 
