@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
-
 DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # This device is hdpi.
@@ -169,3 +167,5 @@ PRODUCT_COPY_FILES += \
 # Rotated and resized bootanimation
 PRODUCT_COPY_FILES += \
      $(LOCAL_PATH)/media/bootanimation.zip:system/media/bootanimation.zip
+
+$(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
