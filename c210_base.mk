@@ -98,8 +98,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/idc/S3C24XX_TouchScreen.idc:system/usr/idc/S3C24XX_TouchScreen.idc \
     $(LOCAL_PATH)/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
     $(LOCAL_PATH)/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
-    $(LOCAL_PATH)/idc/qwerty.idc:system/usr/idc/qwerty.idc \
-    $(LOCAL_PATH)/idc/qwerty2.idc:system/usr/idc/qwerty2.idc \
     $(LOCAL_PATH)/idc/s5pc210_ts.idc:system/usr/idc/s5pc210_ts.idc \
     $(LOCAL_PATH)/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc \
     $(LOCAL_PATH)/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
@@ -113,18 +111,7 @@ PRODUCT_COPY_FILES += \
 
 # keylayout
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/keylayout/AVRCP.kl:system/usr/keylayout/AVRCP.kl \
-    $(LOCAL_PATH)/keylayout/Generic.kl:system/usr/keylayout/Generic.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_028e.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c216.kl:system/usr/keylayout/Vendor_046d_Product_c216.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c294.kl:system/usr/keylayout/Vendor_046d_Product_c294.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c299.kl:system/usr/keylayout/Vendor_046d_Product_c299.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_046d_Product_c532.kl:system/usr/keylayout/Vendor_046d_Product_c532.kl \
     $(LOCAL_PATH)/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_054c_Product_0268.kl:system/usr/keylayout/Vendor_054c_Product_0268.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_05ac_Product_0239.kl:system/usr/keylayout/Vendor_05ac_Product_0239.kl \
-    $(LOCAL_PATH)/keylayout/Vendor_22b8_Product_093d.kl:system/usr/keylayout/Vendor_22b8_Product_093d.kl \
-    $(LOCAL_PATH)/keylayout/qwerty.kl:system/usr/keylayout/qwerty.kl \
     $(LOCAL_PATH)/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
     $(LOCAL_PATH)/keylayout/sec_e-pen.kl:system/usr/keylayout/sec_e-pen.kl \
     $(LOCAL_PATH)/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
