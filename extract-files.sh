@@ -139,19 +139,6 @@ adb pull /system/lib/hw/sensors.s5pc210.so ../../../vendor/$MANUFACTURER/$COMMON
 # GPS
 adb pull /system/lib/hw/gps.s5pc210.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/gps.s5pc210.so
 
-# WIFI
-adb pull /system/wifi/ar6000.ko ../../../vendor/$MANUFACTURER/$COMMON/proprietary/ar6000.ko
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/athtcmd_ram.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/athtcmd_ram.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/athwlan.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/athwlan.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/athwlan_mobile.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/athwlan_mobile.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/athwlan_router.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/athwlan_router.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/athwlan_tablet.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/athwlan_tablet.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/bdata.SD31.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/bdata.SD31.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/bdata.SD31.tcmd.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/bdata.SD31.tcmd.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/data.patch.hw3_0.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/data.patch.hw3_0.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/device.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/device.bin
-adb pull /system/wifi/ath6k/AR6003/hw2.1.1/otp.bin ../../../vendor/$MANUFACTURER/$COMMON/proprietary/otp.bin
-
 # LPM
 adb pull /system/bin/charging_mode ../../../vendor/$MANUFACTURER/$COMMON/proprietary/charging_mode
 adb pull /system/bin/immvibed ../../../vendor/$MANUFACTURER/$COMMON/proprietary/immvibed
@@ -339,20 +326,6 @@ PRODUCT_COPY_FILES += \\
 # GPS
 PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__COMMON__/proprietary/gps.s5pc210.so:system/lib/hw/gps.s5pc210.so
-
-# WIFI
-PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/ar6000.ko:system/wifi/ar6000.ko \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/athtcmd_ram.bin:system/wifi/athtcmd_ram.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/athwlan.bin:system/wifi/athwlan.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/athwlan_mobile.bin:system/wifi/athwlan_mobile.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/athwlan_router.bin:system/wifi/athwlan_router.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/athwlan_tablet.bin:system/wifi/athwlan_tablet.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/bdata.SD31.bin:system/wifi/bdata.SD31.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/bdata.SD31.tcmd.bin:system/wifi/bdata.SD31.tcmd.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/data.patch.hw3_0.bin:system/wifi/data.patch.hw3_0.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/device.bin:system/wifi/device.bin \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/otp.bin:system/wifi/otp.bin
 
 # LPM
 PRODUCT_COPY_FILES += \\
