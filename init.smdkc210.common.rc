@@ -151,6 +151,36 @@ on boot
     chown radio system /sys/devices/platform/sec-battery/power_supply/battery/reset_soc
     chown radio system /sys/devices/platform/sec-battery/power_supply/battery/siop_activated
 
+# Permissions for input devices
+    chown system radio /sys/devices/virtual/sec/sec_key/sec_key_pressed
+
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_firm_version
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_threshould
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_all_delta
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_all_refer
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_delta4
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_refer4
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_delta3
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_refer3
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_delta2
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_refer2
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_delta1
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_refer1
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_delta0
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_refer0
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/disp_all_deltadata
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/disp_all_refdata
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_module_off
+    chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_module_on
+
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_version_panel
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_version_phone
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_update_status
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_update
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_threshold
+    chown system radio /sys/devices/virtual/sec/sec_touchscreen/mxt_touchtype
+
+
     # OTG Test
     chown system radio /sys/class/host_notify/usb_otg/booster
     chmod 0664 /sys/class/host_notify/usb_otg/booster
