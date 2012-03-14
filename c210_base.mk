@@ -131,7 +131,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	LiveWallpapers \
 	LiveWallpapersPicker \
-	VisualizatonWallpapers
+	VisualizationWallpapers
 
 # Rotated and resized bootanimation
 PRODUCT_COPY_FILES += \
