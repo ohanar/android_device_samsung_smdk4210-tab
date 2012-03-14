@@ -125,19 +125,13 @@ PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
 
 # Feature live wallpaper
-#PRODUCT_COPY_FILES += \
+PRODUCT_COPY_FILES += \
 	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
-# Live Wallpapers
-#PRODUCT_PACKAGES += \
-	Galaxy4 \
-	HoloSpiralWallpaper \
+PRODUCT_PACKAGES += \
 	LiveWallpapers \
 	LiveWallpapersPicker \
-	MagicSmokeWallpapers \
-	NoiseField \
-	PhaseBeam \
-	VisualizationWallpapers
+	VisualizatonWallpapers
 
 # Rotated and resized bootanimation
 PRODUCT_COPY_FILES += \
