@@ -151,4 +151,5 @@ PRODUCT_PACKAGES += \
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
 
-$(call inherit-product, hardware/samsung/exynos4/multimedia/Android.mk)
+# Include exynos4 platform specific parts
+$(call inherit-product, hardware/samsung/exynos4/Android.mk)
