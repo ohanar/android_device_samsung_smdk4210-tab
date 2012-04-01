@@ -62,6 +62,29 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	lights.s5pc210
 
+# MFC API
+PRODUCT_PACKAGES += \
+    libsecmfcapi
+
+# OMX
+PRODUCT_PACKAGES += \
+    libstagefrighthw \
+    libcsc \
+    libsecbasecomponent \
+    libsecosal \
+    libSEC_OMX_Resourcemanager \
+    libSEC_OMX_Core \
+    libSEC_OMX_Vdec \
+    libOMX.SEC.AVC.Decoder \
+    libOMX.SEC.M4V.Decoder \
+    libOMX.SEC.WMV.Decoder \
+    libOMX.SEC.VP8.Decoder \
+    libSEC_OMX_Venc \
+    libOMX.SEC.AVC.Encoder \
+    libOMX.SEC.M4V.Encoder \
+    libSEC_OMX_Adec \
+    libOMX.SEC.MP3.Decoder
+
 # Filesystem management tools
 PRODUCT_PACKAGES += \
 	make_ext4fs \
@@ -127,3 +150,5 @@ PRODUCT_PACKAGES += \
 	VisualizationWallpapers
 
 $(call inherit-product, frameworks/base/build/tablet-dalvik-heap.mk)
+
+$(call inherit-product, hardware/samsung/exynos4/multimedia/Android.mk)

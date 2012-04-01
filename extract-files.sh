@@ -102,33 +102,6 @@ adb pull /system/lib/libtvoutfimg.so ../../../vendor/$MANUFACTURER/$COMMON/propr
 adb pull /system/lib/libtvouthdmi.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libtvouthdmi.so
 adb pull /system/lib/libtvoutservice.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libtvoutservice.so
 
-# OMX
-adb pull /system/etc/secomxregistry ../../../vendor/$MANUFACTURER/$COMMON/proprietary/secomxregistry
-adb pull /system/etc/somxreg.conf ../../../vendor/$MANUFACTURER/$COMMON/proprietary/somxreg.conf
-adb pull /system/lib/libsavsac.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsavsac.so
-adb pull /system/lib/libsavscmn.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsavscmn.so
-adb pull /system/lib/libsavsff.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsavsff.so
-adb pull /system/lib/libsavsvc.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsavsvc.so
-adb pull /system/lib/libsecmfcdecapi.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsecmfcdecapi.so
-adb pull /system/lib/libsecmfcencapi.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsecmfcencapi.so
-adb pull /system/lib/libsomx263d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomx263d.so
-adb pull /system/lib/libsomx264d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomx264d.so
-adb pull /system/lib/libsomxaacd.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxaacd.so
-adb pull /system/lib/libsomxac3d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxac3d.so
-adb pull /system/lib/libsomxamrd.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxamrd.so
-adb pull /system/lib/libsomxcmn.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxcmn.so
-adb pull /system/lib/libsomxcore.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxcore.so
-adb pull /system/lib/libsomxflacd.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxflacd.so
-adb pull /system/lib/libsomxmp3d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxmp3d.so
-adb pull /system/lib/libsomxmp4vd.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxmp4vd.so
-adb pull /system/lib/libsomxmp43d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxmp43d.so
-adb pull /system/lib/libsomxsr263d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxsr263d.so
-adb pull /system/lib/libsomxvc1d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxvc1d.so
-adb pull /system/lib/libsomxvenc.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxvenc.so
-adb pull /system/lib/libsomxwmad.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxwmad.so
-adb pull /system/lib/libsomxwmv7d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxwmv7d.so
-adb pull /system/lib/libsomxwmv8d.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libsomxwmv8d.so
-
 # SENSORS
 adb pull /system/lib/libakm.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libakm.so
 adb pull /system/lib/libmllite.so ../../../vendor/$MANUFACTURER/$COMMON/proprietary/libmllite.so
@@ -286,34 +259,6 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__COMMON__/proprietary/libtvoutfimg.so:system/lib/libtvoutfimg.so \\
     vendor/__MANUFACTURER__/__COMMON__/proprietary/libtvouthdmi.so:system/lib/libtvouthdmi.so \\
     vendor/__MANUFACTURER__/__COMMON__/proprietary/libtvoutservice.so:system/lib/libtvoutservice.so
-
-# OMX
-PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/secomxregistry:system/etc/secomxregistry \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/somxreg.conf:system/etc/somxreg.conf \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsavsac.so:system/lib/libsavsac.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsavscmn.so:system/lib/libsavscmn.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsavsff.so:system/lib/libsavsff.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsavsvc.so:system/lib/libsavsvc.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsecmfcdecapi.so:system/lib/libsecmfcdecapi.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsecmfcencapi.so:system/lib/libsecmfcencapi.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomx263d.so:system/lib/libsomx263d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomx264d.so:system/lib/libsomx264d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxaacd.so:system/lib/libsomxaacd.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxac3d.so:system/lib/libsomxac3d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxamrd.so:system/lib/libsomxamrd.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxcmn.so:system/lib/libsomxcmn.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxcore.so:system/lib/libsomxcore.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxflacd.so:system/lib/libsomxflacd.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxmp3d.so:system/lib/libsomxmp3d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxmp4vd.so:system/lib/libsomxmp4vd.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxmp43d.so:system/lib/libsomxmp43d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxsr263d.so:system/lib/libsomxsr263d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxvc1d.so:system/lib/libsomxvc1d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxvenc.so:system/lib/libsomxvenc.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxwmad.so:system/lib/libsomxwmad.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxwmv7d.so:system/lib/libsomxwmv7d.so \\
-    vendor/__MANUFACTURER__/__COMMON__/proprietary/libsomxwmv8d.so:system/lib/libsomxwmv8d.so
 
 # SENSORS
 PRODUCT_COPY_FILES += \\
