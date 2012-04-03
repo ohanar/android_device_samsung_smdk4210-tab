@@ -92,9 +92,6 @@ BOARD_VOLD_MAX_PARTITIONS := 11
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
-# MTP
-BOARD_MTP_DEVICE := "/dev/usb_mtp_gadget"
-
 # Recovery
 BOARD_CUSTOM_GRAPHICS := ../../../device/samsung/c210-common/recovery/graphics.c
 BOARD_USES_MMCUTILS := true
