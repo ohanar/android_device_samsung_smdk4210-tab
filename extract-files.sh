@@ -74,7 +74,7 @@ adb pull /system/usr/share/alsa/pcm/surround51.conf ../../../vendor/$MANUFACTURE
 adb pull /system/usr/share/alsa/pcm/surround71.conf ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/surround71.conf
 
 # EGL
-adb pull /system/lib/hw/gralloc.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gralloc.s5pc210.so
+adb pull /system/lib/hw/gralloc.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gralloc.exynos4.so
 adb pull /system/lib/egl/libEGL_mali.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libEGL_mali.so
 adb pull /system/lib/egl/libGLES_android.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLES_android.so
 adb pull /system/lib/egl/libGLESv1_CM_mali.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libGLESv1_CM_mali.so
@@ -85,11 +85,10 @@ adb pull /system/lib/libMali.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietar
 adb pull /system/lib/libUMP.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libUMP.so
 
 # HWCOMPOSER
-adb pull /system/lib/hw/hwcomposer.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/hwcomposer.s5pc210.so
+adb pull /system/lib/hw/hwcomposer.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/hwcomposer.exynos4.so
 adb pull /system/bin/tvoutserver ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/tvoutserver
 adb pull /system/lib/lib_tvoutengine.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/lib_tvoutengine.so
 adb pull /system/lib/libfimc.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libfimc.so
-adb pull /system/lib/libfimg.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libfimg.so
 adb pull /system/lib/libtvout.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libtvout.so
 adb pull /system/lib/libtvout_jni.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libtvout_jni.so
 adb pull /system/lib/libtvoutcec.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libtvoutcec.so
@@ -105,10 +104,10 @@ adb pull /system/lib/libakm.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary
 adb pull /system/lib/libmllite.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libmllite.so
 adb pull /system/lib/libmlplatform.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libmlplatform.so
 adb pull /system/lib/libmpl.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/libmpl.so
-adb pull /system/lib/hw/sensors.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.s5pc210.so
+adb pull /system/lib/hw/sensors.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/sensors.exynos4.so
 
 # GPS
-adb pull /system/lib/hw/gps.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.s5pc210.so
+adb pull /system/lib/hw/gps.s5pc210.so ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/gps.exynos4.so
 
 # LPM
 adb pull /system/bin/charging_mode ../../../vendor/$MANUFACTURER/$DEVICE/proprietary/charging_mode
@@ -152,7 +151,8 @@ PRODUCT_COPY_FILES := \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudiohw_sf.so:obj/lib/libaudiohw_sf.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libaudiopolicy.so:obj/lib/libaudiopolicy.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmediayamahaservice.so:obj/lib/libmediayamahaservice.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libtvout.so:obj/lib/libtvout.so
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libtvout.so:obj/lib/libtvout.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libfimc.so:obj/lib/libfimc.so
 
 # RIL
 PRODUCT_COPY_FILES += \\
@@ -210,7 +210,7 @@ PRODUCT_COPY_FILES += \\
 
 # EGL
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gralloc.s5pc210.so:system/lib/hw/gralloc.s5pc210.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gralloc.exynos4.so:system/lib/hw/gralloc.exynos4.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libEGL_mali.so:system/lib/egl/libEGL_mali.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLES_android.so:system/lib/egl/libGLES_android.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libGLESv1_CM_mali.so:system/lib/egl/libGLESv1_CM_mali.so \\
@@ -222,11 +222,10 @@ PRODUCT_COPY_FILES += \\
 
 # HWCOMPOSER
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/hwcomposer.s5pc210.so:system/lib/hw/hwcomposer.s5pc210.so \\
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/hwcomposer.exynos4.so:system/lib/hw/hwcomposer.exynos4.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/tvoutserver:system/bin/tvoutserver \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/lib_tvoutengine.so:system/lib/lib_tvoutengine.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libfimc.so:system/lib/libfimc.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/libfimg.so:system/lib/libfimg.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libtvout.so:system/lib/libtvout.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libtvout_jni.so:system/lib/libtvout_jni.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libtvoutcec.so:system/lib/libtvoutcec.so \\
@@ -243,11 +242,11 @@ PRODUCT_COPY_FILES += \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmllite.so:system/lib/libmllite.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmlplatform.so:system/lib/libmlplatform.so \\
     vendor/__MANUFACTURER__/__DEVICE__/proprietary/libmpl.so:system/lib/libmpl.so \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.s5pc210.so:system/lib/hw/sensors.s5pc210.so
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/sensors.exynos4.so:system/lib/hw/sensors.exynos4.so
 
 # GPS
 PRODUCT_COPY_FILES += \\
-    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.s5pc210.so:system/lib/hw/gps.s5pc210.so
+    vendor/__MANUFACTURER__/__DEVICE__/proprietary/gps.exynos4.so:system/lib/hw/gps.exynos4.so
 
 # LPM
 PRODUCT_COPY_FILES += \\

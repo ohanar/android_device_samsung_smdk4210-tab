@@ -31,7 +31,7 @@
 #define LOG_TAG "gps-wrapper"
 #include <utils/Log.h>
 
-#define ORIGINAL_HAL_PATH "/system/lib/hw/gps.s5pc210.so"
+#define ORIGINAL_HAL_PATH "/system/lib/hw/gps.exynos4.so"
 
 static const AGpsRilInterface* oldAGPSRIL = NULL;
 static AGpsRilInterface newAGPSRIL;
