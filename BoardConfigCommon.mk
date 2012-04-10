@@ -81,7 +81,6 @@ BOARD_USES_MFC_FPS := true
 
 # Audio
 BOARD_USE_YAMAHAPLAYER := true
-BOARD_USES_AUDIO_LEGACY := true
 
 # Bluetooth
 BOARD_HAVE_BLUETOOTH := true
