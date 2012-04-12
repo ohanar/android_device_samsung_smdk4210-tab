@@ -51,7 +51,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory \
 	librs_jni \
-	SamsungServiceMode
+	SamsungServiceMode \
+	TvOut \
+	TvOutHack
 
 # Audio packages
 PRODUCT_PACKAGES += \
@@ -131,7 +133,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_CHARACTERISTICS := tablet
 
-#PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PROPERTY_OVERRIDES += \
 	ro.opengles.version=131072 \
 	hwui.render_dirty_regions=false
 
