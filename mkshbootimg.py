@@ -34,6 +34,7 @@ if (len(sys.argv) == 5):
     recovery = open(sys.argv[4], 'r')
 offset_table = "\n\nBOOT_IMAGE_OFFSETS\n"
 copydata(outfile, kernel)
+exit(0)
 table_loc = alignoffset(outfile)
 outfile.write('\x00' * 512)
 offset_table += "boot_offset=%d;boot_len=%d;" % appendimage(outfile, boot)
