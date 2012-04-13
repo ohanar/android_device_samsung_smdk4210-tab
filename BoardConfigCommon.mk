@@ -99,12 +99,12 @@ BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
 
 # Wifi
-#BOARD_WLAN_DEVICE                := ar6000
-#WPA_SUPPLICANT_VERSION           := VER_0_6_X
-#BOARD_WPA_SUPPLICANT_DRIVER      := AR6000
-#WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ar6000.ko"
-#WIFI_DRIVER_MODULE_NAME          := ar6000
-#BOARD_WEXT_NO_COMBO_SCAN         := true
+BOARD_WLAN_DEVICE                := ar6000
+WPA_SUPPLICANT_VERSION           := VER_0_6_X
+BOARD_WPA_SUPPLICANT_DRIVER      := AR6000
+WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
+WIFI_DRIVER_MODULE_NAME          := ar6000
+BOARD_WEXT_NO_COMBO_SCAN         := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/c210/BoardConfigVendor.mk
