@@ -18,17 +18,19 @@ on init
     # Filesystem image public mount points.
     mkdir /mnt/.lfs 0755 root root
 
-# ko files for vibrator
-    insmod /lib/modules/vibrator.ko
-
 # Vibetonz
 	export VIBE_PIPE_PATH /dev/pipes
 	mkdir /dev/pipes 0771 shell shell
 
 on post-fs
-    # to eliminate delay of "wait_for_coldboot_done", move these 2 lines here
+
+    # modules
     insmod /lib/modules/j4fs.ko
     mount j4fs /dev/block/mmcblk0p4 /mnt/.lfs
+
+    insmod /system/lib/modules/cfg80211.ko
+    insmod /system/lib/modules/mac80211.ko
+    insmod /system/lib/modules/ath.ko
 
 on post-fs-data
 
