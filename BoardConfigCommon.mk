@@ -106,7 +106,19 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
 WIFI_DRIVER_MODULE_NAME          := ath6kl
 
+# kernel
+TARGET_KERNEL_SOURCE := kernel/samsung/c210
+EXTRA_MODULES:
+	$(mv-modules)
+	$(clean-module-folder)
+	cd hardware/compat-wireless; ./scripts/driver-select ath6kl
+	make -C hardware/compat-wireless KLIB=$(KERNEL_SRC) KLIB_BUILD=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-"
+	make -C hardware/compat-wireless KLIB=$(KERNEL_SRC) KLIB_BUILD=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" install-modules
+	cp `find $(KERNEL_OUT)/kernel/samsung -name *.ko` $(KERNEL_MODULES_OUT)/
+
+TARGET_KERNEL_MODULES := EXTRA_MODULES
+
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/c210/BoardConfigVendor.mk
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c210-common/shbootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c210-common/bootimg.mk
