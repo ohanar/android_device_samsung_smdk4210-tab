@@ -25,7 +25,7 @@ on init
 on post-fs
 
     # modules
-    insmod /lib/modules/j4fs.ko
+    insmod /system/lib/modules/j4fs.ko
     mount j4fs /dev/block/mmcblk0p4 /mnt/.lfs
 
     insmod /system/lib/modules/cfg80211.ko
