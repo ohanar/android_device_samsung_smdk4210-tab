@@ -115,6 +115,7 @@ EXTRA_MODULES:
 	make -C hardware/compat-wireless KLIB=$(KERNEL_SRC) KLIB_BUILD=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-"
 	make -C hardware/compat-wireless KLIB=$(KERNEL_SRC) KLIB_BUILD=$(KERNEL_OUT) ARCH="arm" CROSS_COMPILE="arm-eabi-" install-modules
 	cp `find $(KERNEL_OUT)/kernel/samsung -name *.ko` $(KERNEL_MODULES_OUT)/
+	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
 
 TARGET_KERNEL_MODULES := EXTRA_MODULES
 
