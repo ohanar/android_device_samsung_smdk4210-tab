@@ -18,8 +18,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 # Init files
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/init.smdkc210.common.rc:root/init.smdkc210.common.rc \
+    $(LOCAL_PATH)/lpm.common.rc:root/lpm.common.rc \
     $(LOCAL_PATH)/ueventd.smdkc210.rc:root/ueventd.smdkc210.rc
 
 # Audio
