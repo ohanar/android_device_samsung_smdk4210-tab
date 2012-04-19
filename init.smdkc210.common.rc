@@ -7,20 +7,20 @@ on early-init
 
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-	symlink /mnt/emmc /emmc
+    symlink /mnt/emmc /emmc
 
     mkdir /mnt/usbdisk 0775 system system
     mkdir /efs 0771 radio system
-	mkdir /preload 0771 system system
-	mkdir /mnt/.lfs 0755 root root
+    mkdir /preload 0771 system system
+    mkdir /mnt/.lfs 0755 root root
 
 on init
     # Filesystem image public mount points.
     mkdir /mnt/.lfs 0755 root root
 
 # Vibetonz
-	export VIBE_PIPE_PATH /dev/pipes
-	mkdir /dev/pipes 0771 shell shell
+    export VIBE_PIPE_PATH /dev/pipes
+    mkdir /dev/pipes 0771 shell shell
 
 on post-fs
 
@@ -41,10 +41,6 @@ on post-fs
     chmod 0775 /efs/bluetooth
     chmod 0775 /efs/wifi
 
-    mkdir /data/misc/vpn/profiles 0770 system system
-    mkdir /data/misc/radio 0775 radio system
-    chmod 0770 /data/misc/wifi
-
 on post-fs-data
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
@@ -52,13 +48,8 @@ on post-fs-data
     chown media_rw media_rw /data/media
 
     # give system access to wpa_supplicant.conf for backup and restore
+    mkdir /data/misc/wifi 0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    chmod 0770 /data/misc/wifi
-    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
-    mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
-
     mkdir /data/misc/dhcp 0770 dhcp dhcp
     mkdir /data/misc/dhcpcd 0770 dhcp dhcp 
     chown dhcp dhcp /data/misc/dhcp
@@ -99,7 +90,7 @@ on post-fs-data
     chown root root /system/lib/drm
     chmod 0775 /system/lib/drm
 
-    # DivX DRM	
+    # DivX DRM    
     mkdir /efs/.files 0775
     mkdir /efs/.files/.dx1 0775
     mkdir /efs/.files/.dm33 0775
@@ -166,7 +157,7 @@ on boot
     chown radio system /sys/class/sec/sec_switch/usb_sel
     chmod 664 /sys/class/sec/sec_switch/usb_sel
     chown system system /sys/class/backlight/backlight/brightness
-	
+    
     # Permissions for battery
     chown radio system /sys/devices/platform/sec-battery/power_supply/battery/reset_soc
     chown radio system /sys/devices/platform/sec-battery/power_supply/battery/siop_activated
@@ -221,8 +212,8 @@ on boot
     chown radio system /sys/class/lcd/lcd/lcdtype
 
 # Vibetonz
-	chmod 0660 /dev/tspdrv
-	chown root shell /dev/tspdrv
+    chmod 0660 /dev/tspdrv
+    chown root shell /dev/tspdrv
     
 # GPS
     # UART device
@@ -246,6 +237,10 @@ on boot
     chown radio system /sys/class/sec/sec_key/wakeup_keys
 
 # bluetooth
+    # bluetooth MAC address programming
+    setprop ro.bt.bdaddr_path "/efs/bluetoothd/bt_addr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+
     # UART device
     chmod 0660 /dev/s3c2410_serial0
     chown bluetooth bluetooth /dev/s3c2410_serial0
@@ -255,11 +250,6 @@ on boot
     chmod 0660 /sys/class/rfkill/rfkill0/type
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
-    #chmod 6777 /system/bin/bcm_dut
-
-    # bluetooth MAC address programming
-    setprop ro.bt.bdaddr_path "/data/misc/bluetoothd/bt_addr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
 
 # DVFS upper/under lock sysfs 
     chown radio system /sys/power/cpufreq_min_limit 
