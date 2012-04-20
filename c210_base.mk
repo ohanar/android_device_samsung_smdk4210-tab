@@ -52,13 +52,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     librs_jni \
     SamsungServiceMode \
-    TvOut \
-    TvOutHack
-
-# Audio packages
-PRODUCT_PACKAGES += \
-    audio.a2dp.default \
-    libaudioutils
+    TvOut
 
 # HAL
 PRODUCT_PACKAGES += \
