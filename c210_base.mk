@@ -52,6 +52,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     librs_jni \
     SamsungServiceMode \
+    Torch \
     TvOut
 
 # HAL
