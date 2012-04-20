@@ -316,3 +316,12 @@ service TvoutService_C /system/bin/bintvoutservice
     class main 
     user system 
     group graphics
+
+# Always start root adbd on userdebug and eng builds
+on property:ro.debuggable=1
+    setprop service.adb.root 1
+
+on property:service.adb.root=1
+    setprop ro.secure 0
+    restart adbd
+    setprop ro.secure 1
