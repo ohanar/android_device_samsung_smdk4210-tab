@@ -1,26 +1,47 @@
 on early-init
-    export EXTERNAL_STORAGE /mnt/sdcard
+    export EXTERNAL_STORAGE  /mnt/sdcard
     export SECONDARY_STORAGE /mnt/emmc
-    mkdir /mnt 0775 system system
-    mkdir /mnt/sdcard 0755 system system
-    mkdir /mnt/emmc 0775 system system
+
+    mkdir /mnt         0775 system system
+    mkdir /mnt/sdcard  0755 system system
+    mkdir /mnt/emmc    0775 system system
+    mkdir /mnt/usbdisk 0775 system system
+    mkdir /efs         0771 radio  system
+    mkdir /preload     0771 system system
+    mkdir /mnt/.lfs    0755 root   root
 
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
-    symlink /mnt/emmc /emmc
+    symlink /mnt/emmc   /emmc
 
-    mkdir /mnt/usbdisk 0775 system system
-    mkdir /efs 0771 radio system
-    mkdir /preload 0771 system system
-    mkdir /mnt/.lfs 0755 root root
+# Disable CFQ slice idle delay
+    write /sys/block/mmcblk0/queue/iosched/slice_idle 0
 
-on init
-    # Filesystem image public mount points.
-    mkdir /mnt/.lfs 0755 root root
+# FIXME: permissions for tvout
+    chown media graphics /sys/class/switch/hdmi
+    chmod 0777           /dev/graphics/fb0
+    chmod 0777           /dev/graphics/fb10
+    chmod 0777           /dev/graphics/fb11
+    chmod 0777           /sys/class/switch/hdmi
 
-# Vibetonz
-    export VIBE_PIPE_PATH /dev/pipes
-    mkdir /dev/pipes 0771 shell shell
+# FIXME: permission for HDMI audio path
+    chown media audio /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
+    chmod 0777        /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
+
+on fs
+
+    mount ext4 /dev/block/mmcblk0p1 /efs nosuid nodev noatime wait
+
+    mkdir /efs/bluetooth 0775 radio system
+    mkdir /efs/wifi      0775 radio system
+    chown radio system   /efs/bluetooth
+    chown radio system   /efs/wifi
+    chmod 0775           /efs/bluetooth
+    chmod 0775           /efs/wifi
+
+    mkdir /data/misc/vpn/profiles 0770 system system
+    mkdir /data/misc/radio        0775 radio  system
+    chmod 0770 /data/misc/wifi
 
 on post-fs
 
@@ -33,137 +54,115 @@ on post-fs
     insmod /system/lib/modules/mac80211.ko
     insmod /system/lib/modules/ath.ko
 
-    # efs
-    mount ext4 /dev/block/mmcblk0p1 /efs nosuid nodev noatime wait
-    mkdir /efs/bluetooth
-    mkdir /efs/wifi
-    chown radio system /efs/bluetooth
-    chown radio system /efs/wifi
-    chmod 0775 /efs/bluetooth
-    chmod 0775 /efs/wifi
-
 on post-fs-data
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw
-    chown media_rw media_rw /data/media
+
+    # GPS
+    mkdir /data/gps     771 system system
+    chown root   system /dev/s3c2410_serial1
+    chown root   system /sys/class/sec/gps/GPS_PWR_EN/value
+    chown root   system /sys/class/sec/gps/GPS_nRST/value
+    chown system system /data/gps
+    chmod 0660          /dev/s3c2410_serial1
+    chmod 0664          /sys/class/sec/gps/GPS_PWR_EN/value
+    chmod 0664          /sys/class/sec/gps/GPS_nRST/value
 
     # give system access to wpa_supplicant.conf for backup and restore
-    mkdir /data/misc/wifi 0770 wifi wifi
+    mkdir /data/misc/dhcp         0770 dhcp dhcp
+    mkdir /data/misc/dhcpcd       0770 dhcp dhcp
+    mkdir /system/etc/wifi        0770 wifi wifi
+    mkdir /data/misc/wifi         0770 wifi wifi
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    mkdir /data/misc/dhcpcd 0770 dhcp dhcp 
     chown dhcp dhcp /data/misc/dhcp
     chown dhcp dhcp /data/misc/dhcpcd
+    chown wifi wifi /system/etc/wifi
+    chown wifi wifi /system/etc/wifi/wpa_supplicant.conf
+    chown wifi wifi /data/misc/wifi
+    chown wifi wifi /data/misc/wifi/sockets
+    chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
+    chown 0770      /data/misc/dhcp
+    chown 0770      /data/misc/dhcpcd
+    chmod 0770      /system/etc/wifi
+    chmod 0660      /system/etc/wifi/wpa_supplicant.conf
+    chmod 0770      /data/misc/wifi
+    chmod 0770      /data/misc/wifi/sockets
+    chmod 0660      /data/misc/wifi/wpa_supplicant.conf
+
+    # DRM directory creation
+    mkdir /system/etc/security/.drm 0775 root root
+    chown root root                 /system/etc/security/.drm
+    chmod 0775                      /system/etc/security/.drm
+
+    # Added for Playready DRM Support
+    mkdir /data/data/.drm            0775 drm system
+    mkdir /data/data/.drm/.playready 0775 drm system
+    chown drm system                 /data/data/.drm
+    chown drm system                 /data/data/.drm/.playready
+    chmod 0775                       /data/data/.drm
+    chmod 0775                       /data/data/.drm/.playready
+
+    # Added drm folder to copy drm plugins
+    mkdir /system/lib/drm 0775 root root
+    chown root root            /system/lib/drm
+    chmod 0775                 /system/lib/drm
+
+    # DivX DRM
+    mkdir /efs/.files        0775
+    mkdir /efs/.files/.dx1   0775 media system
+    mkdir /efs/.files/.dm33  0775 media system
+    mkdir /efs/.files/.mp301 0775 media system
+    chown media system       /efs/.files/.dx1
+    chown media system       /efs/.files/.dm33
+    chown media system       /efs/.files/.mp301
+    chmod 0775               /efs/.files/.dx1
+    chmod 0775               /efs/.files/.dm33
+    chmod 0775               /efs/.files/.mp301
+
+    # setup for alsa snd device
+    chmod 0770 /dev/snd/pcmC0D0c
+    chmod 0770 /dev/snd/pcmC0D0p
+    chmod 0770 /dev/snd/controlC0
+    chmod 0770 /dev/snd/timer
+    chmod 0770 /dev/snd/hwC0D0
 
     # create log system
     mkdir /data/log 0775 system log
-    chown system log /data/log
-    chown system system /data/anr
-    chmod 0775 /data/log
-    chmod 0775 /data/anr
-    
+    chown system log    /data/log
+    chmod 0775          /data/log
+    chmod 0775          /data/anr
+
     chmod 0662 /dev/log/radio
     chmod 0662 /dev/log/main
     chmod 0662 /dev/log/event
     
-#Change Permission /data/app for booting time
-#    chmod 0771 /data/app
-#    chown system system /data/app
+    # panorama directory creation
+    mkdir /data/pxtmpdir 0775 system system
+    chown system system /data/pxtmpdir
+    chmod 0775          /data/pxtmpdir
 
-    mkdir /data/misc/radio 0775 radio system
+    # Permissions for gpio_keys.
+    chown system radio /sys/class/sec/sec_key/wakeup_keys
+    write /sys/class/sec/sec_key/wakeup_keys  102,116
 
-#DRM directory creation
-    mkdir /system/etc/security/.drm 0775
-    chown root root /system/etc/security/.drm
-    chmod 0775 /system/etc/security/.drm
 
-    # Added for Playready DRM Support
-    mkdir /data/data/.drm 0775
-    chown drm system /data/data/.drm
-    chmod 0775 /data/data/.drm
-    mkdir /data/data/.drm/.playready 0775
-    chown drm system /data/data/.drm/.playready
-    chmod 0775 /data/data/.drm/.playready
+    # Add permission for ATM.
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_current_now
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_full_check
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_temp
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_temp_check
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_type
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_vol
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/capacity
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/charging_source
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/fg_reg
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/fg_soc
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/reset_soc
 
-    #Added drm folder to copy drm plugins
-    mkdir /system/lib/drm 0775
-    chown root root /system/lib/drm
-    chmod 0775 /system/lib/drm
-
-    # DivX DRM    
-    mkdir /efs/.files 0775
-    mkdir /efs/.files/.dx1 0775
-    mkdir /efs/.files/.dm33 0775
-    mkdir /efs/.files/.mp301 0775
-    chown media system /efs/.files/.dx1
-    chown media system /efs/.files/.dm33
-    chown media system /efs/.files/.mp301
-    chmod 0775 /efs/.files/.dx1
-    chmod 0775 /efs/.files/.dm33
-    chmod 0775 /efs/.files/.mp301
-    
-# setup for alsa snd device
-    symlink /dev/snd/pcmC0D0c /dev/pcmC0D0c
-    symlink /dev/snd/pcmC0D0p /dev/pcmC0D0p
-    symlink /dev/snd/controlC0 /dev/controlC0
-    symlink /dev/snd/timer /dev/timer
-    symlink /dev/snd/hwC0D0 /dev/hwC0D0
-    chmod 0777 /dev/pcmC0D0c
-    chmod 0777 /dev/pcmC0D0p
-    chmod 0777 /dev/controlC0
-    chmod 0777 /dev/timer
-    chmod 0777 /dev/hwC0D0
-    chmod 0777 /dev/snd/pcmC0D0c
-    chmod 0777 /dev/snd/pcmC0D0p
-    chmod 0777 /dev/snd/controlC0
-    chmod 0777 /dev/snd/timer
-    chmod 0777 /dev/snd/hwC0D0
-
-    # Set indication (checked by vold) that we have finished this action
-    setprop vold.post_fs_data_done 1
-
-on boot
-    mount debugfs /sys/kernel/debug /sys/kernel/debug
-
-    setprop ro.build.product smdkc210
-    setprop ro.product.device smdkc210
-
-# fake some battery state
-    setprop status.battery.state Slow
-    setprop status.battery.level 5
-    setprop status.battery.level_raw  50
-    setprop status.battery.level_scale 9
-
-# sensor
-    chown root system /dev/mpu
-    chown root system /dev/mpuirq
-    chown root system /dev/accelirq
-    chown root system /dev/timerirq
-
-    chmod 0660 /dev/mpu
-    chmod 0660 /dev/mpuirq
-    chmod 0660 /dev/accelirq
-    chmod 0660 /dev/timerirq
-
-    chmod 664 /sys/class/sensors/accelerometer_sensor/calibration
-    chown system system /sys/class/sensors/accelerometer_sensor/calibration
-
-    # permission for HDMI audio path
-    chown media audio /sys/devices/virtual/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
-
-    # Permissions for System Server and daemons.
-    chown radio system /sys/class/sec/sec_switch/uart_sel
-    chmod 664 /sys/class/sec/sec_switch/uart_sel
-    chown radio system /sys/class/sec/sec_switch/usb_sel
-    chmod 664 /sys/class/sec/sec_switch/usb_sel
     chown system system /sys/class/backlight/backlight/brightness
-    
-    # Permissions for battery
-    chown radio system /sys/devices/platform/sec-battery/power_supply/battery/reset_soc
-    chown radio system /sys/devices/platform/sec-battery/power_supply/battery/siop_activated
 
-# Permissions for input devices
+    # Permissions for input devices
     chown system radio /sys/devices/virtual/sec/sec_key/sec_key_pressed
 
     chown system radio /sys/devices/virtual/sec/tsp_noise_test/set_firm_version
@@ -192,77 +191,85 @@ on boot
     chown system radio /sys/devices/virtual/sec/sec_touchscreen/tsp_threshold
     chown system radio /sys/devices/virtual/sec/sec_touchscreen/mxt_touchtype
 
+    # Permissions for bluetooth
+    setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+    chown bluetooth bluetooth /dev/s3c2410_serial0
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chmod 0600                /dev/s3c2410_serial0
+    chmod 0660                /sys/class/rfkill/rfkill0/state
 
-    # OTG Test
-    chown system radio /sys/class/host_notify/usb_otg/booster
-    chmod 0664 /sys/class/host_notify/usb_otg/booster
+    # Vibetonz
+    chown root shell /dev/tspdrv
+    chmod 0660       /dev/tspdrv
 
     # Permissions for LCD
-    chown radio system /sys/class/lcd/lcd/acl_enable
+    chown system radio  /sys/class/lcd/lcd/lcd_power
+    chown system radio  /sys/class/lcd/lcd/lcdtype
+    #chown system system /sys/class/backlight/backlight/auto_brightness
 
     # Permissions for mDNIe
     chown system media_rw /sys/class/mdnie/mdnie/background_effect
     chown system media_rw /sys/class/mdnie/mdnie/outdoor
     chown system media_rw /sys/class/mdnie/mdnie/scenario
-    
-    # Permissions for Torch
-    chown system media_rw /sys/class/camera/backcam/flash
-    chown system media_rw /sys/class/camera/rear/flash    
+    chown system media_rw /sys/class/mdnie/mdnie/negative
+    write /sys/class/mdnie/mdnie/scenario 4
 
-    # Permissions for DFMS
-    chown radio system /sys/class/lcd/lcd/lcdtype
+    # Permissions for uart_sel and usb_sel
+    chown system radio /sys/class/sec/sec_switch/uart_sel
+    chown system radio /sys/class/sec/sec_switch/usb_sel
+    chown system radio /mnt/.lfs/sw_sel
 
-# Vibetonz
-    chmod 0660 /dev/tspdrv
-    chown root shell /dev/tspdrv
-    
-# GPS
-    # UART device
-    chmod 0660 /dev/s3c2410_serial1
-    chown root system /dev/s3c2410_serial1
+    # Permissions for OTG Test
+    chown system radio /sys/class/host_notify/usb_otg/booster
+    chmod 0664         /sys/class/host_notify/usb_otg/booster
 
-    mkdir /data/gps 0771 system system
-    chown system system /data/gps
+    # Permission for radio
+    chown system radio /sys/devices/platform/s5p-ehci/ehci_power
+    chown system radio /sys/devices/platform/s5p-ehci/ehci_runtime
+    chown system radio /sys/devices/virtual/misc/multipdp/waketime
 
-    chmod 0664 /sys/class/sec/gps/GPS_PWR_EN/value
-    chown root system /sys/class/sec/gps/GPS_PWR_EN/value
+    # for datarouter
+    chown system system /dev/dun
+    chown system system /dev/ttyGS0
 
-    chmod 0664 /sys/class/sec/gps/GPS_nRST/value
-    chown root system /sys/class/sec/gps/GPS_nRST/value
+    # DVFS - cpufreq ondemand
+    write /sys/devices/system/cpu/cpufreq/ondemand/up_threshold 85
 
-# MTP permission
-    chmod 0660 /dev/usb_mtp_gadget 
-    chown system system /dev/usb_mtp_gadget
+    # Permissions for dvfs lock
+    chown system system /sys/power/cpufreq_max_limit
+    chown system system /sys/power/cpufreq_min_limit
+    chmod 0660          /sys/power/cpufreq_max_limit
+    chmod 0660          /sys/power/cpufreq_min_limit
 
-# keys
-    chown radio system /sys/class/sec/sec_key/wakeup_keys
+    # Permissions for sensors
+    chown root system /dev/mpu
+    chown root system /dev/mpuirq
+    chown root system /dev/accelirq
+    chown root system /dev/timerirq
+    chmod 0660        /dev/mpu
+    chmod 0660        /dev/mpuirq
+    chmod 0660        /dev/accelirq
+    chmod 0660        /dev/timerirq
 
-# bluetooth
-    # bluetooth MAC address programming
-    setprop ro.bt.bdaddr_path "/efs/bluetoothd/bt_addr"
-    chown bluetooth bluetooth ro.bt.bdaddr_path
+    chmod 664           /sys/class/sensors/accelerometer_sensor/calibration
+    chown system system /sys/class/sensors/accelerometer_sensor/calibration
 
-    # UART device
-    chmod 0660 /dev/s3c2410_serial0
-    chown bluetooth bluetooth /dev/s3c2410_serial0
+    # for device encryption
+    setprop vold.post_fs_data_done 1
 
-    # power up/down interface
-    chmod 0660 /sys/class/rfkill/rfkill0/state
-    chmod 0660 /sys/class/rfkill/rfkill0/type
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
-    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+on boot
+    mount debugfs /sys/kernel/debug /sys/kernel/debug
 
-# DVFS upper/under lock sysfs 
-    chown radio system /sys/power/cpufreq_min_limit 
-    chmod 0664 /sys/power/cpufreq_min_limit 
-    chown radio system /sys/power/cpufreq_max_limit 
-    chmod 0664 /sys/power/cpufreq_max_limit 
-    chown radio system /sys/power/cpufreq_table 
-    chmod 0444 /sys/power/cpufreq_table 
+    # Device Encryption by B2B Security Lab.
+    setprop ro.crypto.keyfile.userdata /efs/metadata
 
-# for datarouter
-   chown system system /dev/ttyGS0
-   chown system system /dev/dun
+    # fake some battery state
+    setprop status.battery.state Slow
+    setprop status.battery.level 5
+    setprop status.battery.level_raw  50
+    setprop status.battery.level_scale 9
 
 # Vibetonz
 service immvibed /system/bin/immvibed
@@ -275,19 +282,26 @@ service immvibed /system/bin/immvibed
 service wpa_supplicant /system/bin/wpa_supplicant \
         -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
     class main
+    group system wifi inet
     socket wpa_wlan0 dgram 0660 wifi wifi
-    user wifi
-    group wifi system inet net_admin net_raw keystore
     disabled
     oneshot
 
 service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL wlan0
+    group system dhcp
     class main
     disabled
     oneshot
 
 service iprenew_wlan0 /system/bin/dhcpcd -n
     class main
+    disabled
+    oneshot
+
+# bluetooth mac address
+service bdaddr /system/bin/bdaddr_read
+    class main
+    user root
     disabled
     oneshot
 
@@ -302,12 +316,3 @@ service TvoutService_C /system/bin/bintvoutservice
     class main 
     user system 
     group graphics
-
-# Always start root adbd on userdebug and eng builds
-on property:ro.debuggable=1
-    setprop service.adb.root 1
-
-on property:service.adb.root=1
-    setprop ro.secure 0
-    restart adbd
-    setprop ro.secure 1

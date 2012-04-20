@@ -12,25 +12,19 @@
 /dev/video21              0666   system     system
 /dev/pmem                 0666   system     graphics
 /dev/pmem_gpu1            0660   system     graphics
+# logger should be world writable (for logging) but not readable
+/dev/log/*                0662   root       log
 /dev/i2c-7                0666   system     system
 /dev/CEC                  0666   system     system
 /dev/HPD                  0666   system     system
 /dev/fimg2d               0666   system     graphics
 /dev/input/*              0666   root       input
-# for Sensor HAL
-
-# for MPL
-/dev/mpu	0660	system	system
-/dev/mpuirq	0660	system	system
-
-# for AKM8975
+/dev/block/mmcblk0p8      0660   radio      system
 /dev/akm8975              0660   system     system
 /dev/accelerometer        0660   system     system
-
-/dev/block/mmcblk0p8      0660   radio      system
-
-/dev/s3c2410_serial*	  0660	 root	    system
-
-# for ULP Audio
+/dev/mpu                  0660   system     system
+/dev/mpuirq               0660   system     system
+/dev/rfkill               0666   root       root
+/dev/s3c2410_serial*      0660   root       system
 /dev/s5p-rp               0660   system     audio
 /dev/s5p-rp_ctrl          0660   system     audio
