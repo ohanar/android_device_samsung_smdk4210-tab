@@ -10,7 +10,6 @@
 /dev/s5p-jpeg             0660   system     camera
 /dev/video14              0666   system     system
 /dev/video21              0666   system     system
-/sys/devices/virtual/camera/rear/flash   0666   system    system
 /dev/pmem                 0666   system     graphics
 /dev/pmem_gpu1            0660   system     graphics
 # logger should be world writable (for logging) but not readable

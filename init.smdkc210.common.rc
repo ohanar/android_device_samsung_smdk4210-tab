@@ -146,7 +146,6 @@ on post-fs-data
     chown system radio /sys/class/sec/sec_key/wakeup_keys
     write /sys/class/sec/sec_key/wakeup_keys  102,116
 
-
     # Add permission for ATM.
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_current_now
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_full_check
@@ -253,8 +252,12 @@ on post-fs-data
     chmod 0660        /dev/accelirq
     chmod 0660        /dev/timerirq
 
-    chmod 664           /sys/class/sensors/accelerometer_sensor/calibration
     chown system system /sys/class/sensors/accelerometer_sensor/calibration
+    chmod 664           /sys/class/sensors/accelerometer_sensor/calibration
+
+    # permissions for torch
+    chown system system /sys/devices/virtual/camera/rear/flash
+    chmod 666           /sys/devices/virtual/camera/rear/flash
 
     # for device encryption
     setprop vold.post_fs_data_done 1
