@@ -12,6 +12,7 @@ on init
     symlink /system/etc /etc
 
     mkdir /boot
+    mkdir /recovery
     mkdir /sdcard
     mkdir /emmc
     mkdir /usbdisk
@@ -22,6 +23,11 @@ on init
     mount /tmp /tmp tmpfs
 
 on boot
+# Permissions for mDNIe
+    chown system media_rw /sys/class/mdnie/mdnie/mode
+    chown system media_rw /sys/class/mdnie/mdnie/outdoor
+    chown system media_rw /sys/class/mdnie/mdnie/scenario
+    write /sys/class/mdnie/mdnie/scenario 4
 
     ifup lo
     hostname localhost
@@ -33,9 +39,9 @@ service ueventd /sbin/ueventd
     critical
 
 service console /sbin/sh
+    class core
     console
     disabled
-    user shell
     group log
     
 on property:ro.debuggable=1
@@ -46,11 +52,21 @@ service recovery /sbin/recovery
 service adbd /sbin/adbd recovery
     disabled
 
-# Always start root adbd on userdebug and eng builds
+# Always start adbd on userdebug and eng builds
+# In recovery, always run adbd as root.
 on property:ro.debuggable=1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 04e8
+    write /sys/class/android_usb/android0/idProduct 6860
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
+    write /sys/class/android_usb/android0/iProduct $ro.product.model
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    start adbd
     setprop service.adb.root 1
 
 on property:service.adb.root=1
-    setprop ro.secure 0
+    write /sys/class/android_usb/android0/enable 0
     restart adbd
-    setprop ro.secure 1
+    write /sys/class/android_usb/android0/enable 1
