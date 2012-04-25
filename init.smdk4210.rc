@@ -1,3 +1,6 @@
+import init.smdk4210.fstab.rc
+import init.smdk4210.usb.rc
+
 on early-init
     export EXTERNAL_STORAGE  /mnt/sdcard
     export SECONDARY_STORAGE /mnt/emmc
@@ -136,7 +139,7 @@ on post-fs-data
     chmod 0662 /dev/log/radio
     chmod 0662 /dev/log/main
     chmod 0662 /dev/log/event
-    
+
     # panorama directory creation
     mkdir /data/pxtmpdir 0775 system system
     chown system system /data/pxtmpdir
@@ -314,23 +317,33 @@ service bdaddr /system/bin/bdaddr_read
 service sdcard /system/bin/sdcard /data/media 1023 1023
     class late_start
 
-# TVout 
+# TVout
 service TvoutService_C /system/bin/bintvoutservice
-    class main 
-    user system 
+    class main
+    user system
     group graphics
-
-# Always start root adbd on userdebug and eng builds
-on property:ro.debuggable=1
-    setprop service.adb.root 1
-
-on property:service.adb.root=1
-    setprop ro.secure 0
-    restart adbd
-    setprop ro.secure 1
 
 service gpsd /system/bin/gpsd -c /system/etc/gps.xml
     class main
     socket gps seqpacket 0660 gps system
     user gps
     group system inet sdcard_rw
+
+# Always start adbd on userdebug and eng builds
+# In recovery, always run adbd as root.
+on property:ro.debuggable=1
+    write /sys/class/android_usb/android0/enable 0
+    write /sys/class/android_usb/android0/idVendor 04e8
+    write /sys/class/android_usb/android0/idProduct 6860
+    write /sys/class/android_usb/android0/functions adb
+    write /sys/class/android_usb/android0/enable 1
+    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
+    write /sys/class/android_usb/android0/iProduct $ro.product.model
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    start adbd
+    setprop service.adb.root 1
+
+on property:service.adb.root=1
+    write /sys/class/android_usb/android0/enable 0
+    restart adbd
+    write /sys/class/android_usb/android0/enable 1
