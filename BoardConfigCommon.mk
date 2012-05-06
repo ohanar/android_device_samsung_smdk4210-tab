@@ -37,7 +37,7 @@ endif
 
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_BOOTLOADER_BOARD_NAME := smdkc210
-TARGET_BOARD_INFO_FILE := device/samsung/c210-common/board-info.txt
+TARGET_BOARD_INFO_FILE := device/samsung/exynos4tab-common/board-info.txt
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
@@ -56,11 +56,12 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 14138998784
 BOARD_FLASH_BLOCK_SIZE := 1024
 
 # Releasetools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/c210-common/releasetools/c210_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/c210-common/releasetools/c210_img_from_target_files
+# TODO: fix standard tools
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/exynos4tab-common/releasetools/c210_ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/exynos4tab-common/releasetools/c210_img_from_target_files
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/c210-common/configs/egl.cfg
+BOARD_EGL_CFG := device/samsung/exynos4tab-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 COMMON_GLOBAL_CFLAGS += -DMISSING_EGL_PIXEL_FORMAT_YV12 -DMISSING_GRALLOC_BUFFERS -DMISSING_EGL_EXTERNAL_IMAGE
 
@@ -90,8 +91,8 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/samsung/c210-common/recovery/init.rc
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/c210-common/recovery/recovery_keys.c
+TARGET_RECOVERY_INITRC := device/samsung/exynos4tab-common/recovery/init.rc
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/exynos4tab-common/recovery/recovery_keys.c
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -118,7 +119,7 @@ EXTRA_MODULES:
 
 TARGET_KERNEL_MODULES := EXTRA_MODULES
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/c210-common/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/exynos4tab-common/bootimg.mk
 
 # Use the non-open-source parts, if they're present
--include vendor/samsung/c210/BoardConfigVendor.mk
+-include vendor/samsung/exynos4tab/BoardConfigVendor.mk
