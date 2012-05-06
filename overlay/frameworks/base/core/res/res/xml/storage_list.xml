@@ -38,13 +38,15 @@
              android:primary="true"
              android:emulated="true"
              android:removable="false"
-             android:mtpReserve="100" />
+             android:mtpReserve="100"
+             android:allowMassStorage="true" />
 
     <storage android:mountPoint="/mnt/emmc"
              android:storageDescription="@string/storage_sd_card"
              android:primary="false"
              android:emulated="false"
-             android:removable="true" />
+             android:removable="true"
+             android:allowMassStorage="true" />
 
     <storage android:mountPoint="/mnt/usbdisk"
              android:storageDescription="@string/storage_usb"
