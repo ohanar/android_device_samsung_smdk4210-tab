@@ -36,6 +36,7 @@ COMMON_GLOBAL_CFLAGS += -DEXYNOS4210_TABLET
 endif
 
 TARGET_BOARD_PLATFORM := exynos4
+TARGET_FAMILY := exynos4tab
 TARGET_BOOTLOADER_BOARD_NAME := smdk4210
 TARGET_BOARD_INFO_FILE := device/samsung/exynos4tab-common/board-info.txt
 
