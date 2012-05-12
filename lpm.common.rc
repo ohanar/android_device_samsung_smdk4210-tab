@@ -23,7 +23,7 @@ on init
     mkdir /dbdata
     mkdir /mnt 0775 root root
     mkdir /mnt/.lfs 0775 root root
-    #mount /tmp /tmp tmpfs   
+    #mount /tmp /tmp tmpfs
 
     symlink /sdcard /mnt/sdcard
     symlink /emmc /mnt/emmc
@@ -33,7 +33,7 @@ on post-fs
 
     chmod 0666 /dev/log/radio
     chmod 0666 /dev/log/main
-    chmod 0666 /dev/log/event    
+    chmod 0666 /dev/log/event
 
 on boot
 # backlight
@@ -66,9 +66,9 @@ service playlpm /system/bin/playlpm
     class main
     user root
 
-service immvibed /system/bin/immvibed  
+service immvibed /system/bin/immvibed
     class main
-    oneshot 
+    oneshot
 
 service lpmkey /system/bin/charging_mode
     class main

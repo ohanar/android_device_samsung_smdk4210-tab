@@ -1,1 +1,1 @@
-touch.deviceType = touchScreen 
+touch.deviceType = touchScreen

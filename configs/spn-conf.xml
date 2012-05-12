@@ -17,7 +17,7 @@
 */
 -->
 
-<!-- 
+<!--
 spnOverride attributes:
 	numeric: MCC+MNC from IMSI - this attribute is used as the key
 	imsi_subset: this attribute is used as a imsi filter (imsi format is: [MCC][MNC][imsi_subset][rest of imsi]) - the longest matching imsi_subset is a best match
@@ -27,8 +27,8 @@ spnOverride attributes:
     fake_roaming_on: regard specified PLMN as roaming (comma-separated list)
     	
 examples:
-	<spnOverride 
-		numeric="45001" spn="ko_KR;?œêµ­??SPN,en;English SPN,fr;FranÃ§ais SPN,pl;Polski SPN,Default SPN" 
+	<spnOverride
+		numeric="45001" spn="ko_KR;?œêµ­??SPN,en;English SPN,fr;FranÃ§ais SPN,pl;Polski SPN,Default SPN"
 		spn_display_rule="SPN_RULE_SHOW_SPN" spn_override_only_on="45001" fake_home_on="00101,45008"/>
     <spnOverride numeric="46001" spn="zh_CN;ä¸?›½?”é€? />
 -->

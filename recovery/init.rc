@@ -43,7 +43,7 @@ service console /sbin/sh
     console
     disabled
     group log
-    
+
 on property:ro.debuggable=1
     start console
 
