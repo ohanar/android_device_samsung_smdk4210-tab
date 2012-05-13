@@ -112,6 +112,11 @@ WIFI_DRIVER_MODULE_NAME          := ath6kl
 # kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
 
+CLEAN_MODULES:
+	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
+
+TARGET_KERNEL_MODULES := CLEAN_MODULES
+
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/exynos4tab-common/bootimg.mk
 
 # Use the non-open-source parts, if they're present
