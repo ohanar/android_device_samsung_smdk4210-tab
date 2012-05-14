@@ -108,6 +108,7 @@ BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
 BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
 WIFI_DRIVER_MODULE_NAME          := ath6kl
+WIFI_DRIVER_LOADER_DELAY         := 1000000
 
 # kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
