@@ -1,0 +1,10 @@
+#!/sbin/busybox sh
+bb=/sbin/busybox
+$bb mount -t sysfs sysfs /sys
+if $bb grep -q 1 /sys/class/power_supply/battery/batt_lp_charging ; then
+  $bb mv /lpm.rc /init.rc
+  $bb rm /init.smdk4210.rc
+fi
+$bb umount /sys
+$bb mv /init2 /init
+exec /init
