@@ -1,3 +1,5 @@
+import lpm.fstab.rc
+
 on early-init
     start ueventd
 
@@ -23,7 +25,6 @@ on init
     mkdir /dbdata
     mkdir /mnt 0775 root root
     mkdir /mnt/.lfs 0775 root root
-    #mount /tmp /tmp tmpfs
 
     symlink /sdcard /mnt/sdcard
     symlink /emmc /mnt/emmc
@@ -37,7 +38,7 @@ on post-fs
 
 on boot
 # backlight
-    chown system system /sys/class/backlight/backlight/brightness
+    chown system system /sys/class/backlight/panel/brightness
 
 # CPU Frequency Governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
@@ -48,8 +49,6 @@ on boot
 
     class_start core
     class_start main
-
-#service debuggerd /system/bin/debuggerd
 
 service ueventd /sbin/ueventd
     class core
@@ -74,15 +73,5 @@ service lpmkey /system/bin/charging_mode
     class main
     user root
 
-#service adbd /sbin/adbd
-#    disabled
-
-#on property:persist.service.adb.enable=1
-#    start adbd
-
-#on property:persist.service.adb.enable=0
-#    stop adbd
-
 on property:ro.debuggable=1
     start console
-#    start adbd

@@ -48,6 +48,7 @@ TARGET_PROVIDES_INIT_TARGET_RC := true
 
 BOARD_NAND_PAGE_SIZE := 4096
 BOARD_NAND_SPARE_SIZE := 128
+BOARD_KERNEL_BASE := 0x40000000
 
 # Filesystem
 TARGET_USERIMAGES_USE_EXT4 := true
@@ -110,7 +111,10 @@ WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
 WIFI_DRIVER_MODULE_NAME          := ath6kl
 WIFI_DRIVER_LOADER_DELAY         := 1000000
 
-# kernel
+# Charging Mode (LPM)
+BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
+
+# Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
 
 CLEAN_MODULES:
