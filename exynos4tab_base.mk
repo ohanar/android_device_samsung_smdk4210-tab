@@ -20,8 +20,8 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.smdk4210.rc:root/init.smdk4210.rc \
     $(LOCAL_PATH)/init.smdk4210.usb.rc:root/init.smdk4210.usb.rc \
-    $(LOCAL_PATH)/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc \
-    $(LOCAL_PATH)/lpm/lpm.rc:root/lpm.rc
+    $(LOCAL_PATH)/lpm.common.rc:root/lpm.common.rc \
+    $(LOCAL_PATH)/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
 
 # Audio
 PRODUCT_COPY_FILES += \
