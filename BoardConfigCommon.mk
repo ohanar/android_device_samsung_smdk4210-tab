@@ -37,6 +37,7 @@ endif
 
 TARGET_BOARD_PLATFORM := exynos4
 TARGET_FAMILY := exynos4tab
+TARGET_SOC := exynos4210
 TARGET_BOOTLOADER_BOARD_NAME := smdk4210
 TARGET_BOARD_INFO_FILE := device/samsung/exynos4tab-common/board-info.txt
 
