@@ -302,12 +302,17 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-# bluetooth mac address
-service bdaddr /system/bin/bdaddr_read
+service bccmd /system/bin/bccmd -t bcsp -d /dev/ttySAC0 psload -r /etc/PSConfig_8811.psr
     class main
-    user root
+    group bluetooth net_bt_admin
     disabled
     oneshot
+
+service hciattach /system/bin/hciattach -n -p /dev/ttySAC0 bcsp 3000000 flow
+    class main
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing

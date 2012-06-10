@@ -31,9 +31,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab
 
-# Bluetooth configuration files
+# Bluetooth configuration file
 PRODUCT_COPY_FILES += \
-    system/bluetooth/data/main.le.conf:system/etc/bluetooth/main.conf
+    $(LOCAL_PATH)/configs/PSConfig_8811.psr:system/etc/PSConfig_8811.psr
 
 # Wifi
 PRODUCT_COPY_FILES += \
@@ -54,7 +54,8 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     librs_jni \
     SamsungServiceMode \
-    Torch
+    Torch \
+    bccmd
 
 # HAL
 PRODUCT_PACKAGES += \

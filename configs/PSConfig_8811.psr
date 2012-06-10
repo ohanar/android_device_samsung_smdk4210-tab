@@ -1,0 +1,135 @@
+// CSR tracking information, report this in case of problems:
+//   $Revision: #11 $
+//   Built Thu Jun  9 08:40:33 2011 GMT
+//   Checked-in $DateTime: 2011/06/09 12:02:45 $
+//   $File: //depot/bc/gemini-a06/dev/patches/7558/pb-101-csr8811-csp28-uart.psr $
+
+// patch_hardware_0, PSKEY_PATCH50 (0x212c, 8492), 23 words
+&212c = 0002 7249 0f1b 0f16 01a0 0f26 0210 1222 0218 ff2b ff0e 7200 4f18 fa0b 0014 0327 0218 ff2b ff0e 5000 7718 00e2 e14a
+
+// patch_hardware_1, PSKEY_PATCH51 (0x212d, 8493), 50 words
+&212d = 0003 1dcf 0017 e334 0184 0820 0014 0018 ff2b ff0e 6a00 b818 009e 0017 01a0 e119 1000 2516 fe27 1000 2416 ff27 0117 0213 ff0e fe9f 0017 1f84 08f4 1c84 0d28 e900 3215 0800 00c4 08f0 0114 0018 ff2b ff0e 6a00 b818 009e 0318 ff2b ff0e 1e00 dc18 00e2 0a52
+
+// patch_hardware_2, PSKEY_PATCH52 (0x212e, 8494), 16 words
+&212e = 0002 e5a8 04f0 e900 3c99 04f4 059b 02f0 f80f 0218 ff2b ff0e e600 ae18 00e2 72ae
+
+// patch_hardware_3, PSKEY_PATCH53 (0x212f, 8495), 9 words
+&212f = 0002 52f1 0218 ff2b ff0e 5300 fb18 00e2 7b7d
+
+// patch_hardware_4, PSKEY_PATCH54 (0x2130, 8496), 54 words
+&2130 = 0002 6c21 071b 7f16 0184 0cf0 0127 7012 0023 6f12 e315 0218 ff2b ff0e 6d00 da18 009e 0717 7134 0127 071b 0100 8116 0100 8012 0327 0223 7012 0023 6f12 0417 0018 ff2b ff0e 6200 3a18 009e e199 09f0 0018 ff2b ff0e 5e00 0418 009e 0314 f40f 0218 ff2b ff0e 6d00 9318 00e2 c508
+
+// patch_hardware_5, PSKEY_PATCH55 (0x2131, 8497), 33 words
+&2131 = 0000 e74b 081b 5612 0009 08a4 f821 091b 2912 0009 0da4 e015 01c4 0027 0a17 f811 0118 ff2b ff0e 4600 6118 009e 0114 0527 091b 2912 0018 ff2b ff0e e700 4f18 00e2 9ebb
+
+// patch_hardware_6, PSKEY_PATCH56 (0x2132, 8498), 29 words
+&2132 = 0002 e405 09f4 e419 0638 fa39 00b2 0022 f911 0130 f921 f811 0130 f821 0780 062c fa15 0134 fa25 0018 f829 f911 0218 ff2b ff0e e400 1818 00e2 73ea
+
+// patch_hardware_7, PSKEY_PATCH57 (0x2133, 8499), 10 words
+&2133 = 0004 7005 0018 ff2b ff0e 7e00 bb18 009e f90f 7ca0
+
+// patch_hardware_8, PSKEY_PATCH58 (0x2134, 8500), 25 words
+&2134 = 0001 d3d8 e600 4511 0223 e311 0118 ff2b ff0e 3300 4518 009e e700 7e99 04f4 0213 e600 4521 0118 ff2b ff0e d400 dc18 00e2 798f
+
+// patch_hardware_9, PSKEY_PATCH59 (0x2135, 8501), 15 words
+&2135 = 0002 911f e500 cc19 002b ff14 4d26 0017 0218 ff2b ff0e 9100 2218 00e2 dac0
+
+// patch_hardware_10, PSKEY_PATCH60 (0x2136, 8502), 15 words
+&2136 = 0002 8fde e500 cc15 0027 ff14 001b 4c26 0218 ff2b ff0e 9000 e118 00e2 1f06
+
+// explicit, PSKEY_ULP_RX_DEMOD_CONFIG (0x2184, 8580), 2 words
+&2184 = 2ca0 4836
+
+// patch_radiotest_radio_configure, PSKEY_PATCH108 (0x21fc, 8700), 8 words
+&21fc = fe0b e700 0519 011a 0014 3526 fe0f ff6b
+
+// explicit, PSKEY_BLE_TX_FILTER_CONFIG (0x257a, 9594), 2 words
+&257a = 770c 0003
+
+// PSKEY_ADDRESS
+&0001 = 00df 0001 0078 1234
+
+// PSKEY_ANA_FREQ
+&01fe = 6590
+
+// PSKEY_HOST_INTERFACE
+&01f9 = 0001
+
+// PSKEY_UART_BITRATE (38400)
+//&01ea = 0000 9600
+// PSKEY_UART_BITRATE (115200)
+// &01ea = 0001 C200
+// PSKEY_UART_BITRATE (460800)
+// &01ea = 0007 0800
+// PSKEY_UART_BITRATE (921600)
+// &01ea = 000E 1000
+// PSKEY_UART_BITRATE (1843200)
+//&01ea = 001C 2000
+// PSKEY_UART_BITRATE (3000000)
+&01ea = 002D C6C0
+// PSKEY_UART_BITRATE (4000000)
+//&01ea = 003D 0900
+
+// PSKEY_UART_FLOW_CONTROL
+&01bf = 082e
+
+// PSKEY_PCM_CONFIG32
+// &01b3 = 0x0080 0006
+
+//13 bit SAMPLE_FORMAT
+//&01b3 = 0080 0006
+//16 bit SAMPLE_FORMAT
+&01b3 = 0880 0006
+
+//PSKEY_PCM_FORMAT
+// 0 bit Linear PCM Bit Position
+&01b6 = 0060
+
+// PSKEY_LM_TEST_SEND_ACCEPTED_TWICE
+&00f6 = 0001
+
+&0021 = 0014
+//Set Crystal Frequency Ana_freq
+&01fe = 6590
+
+// deep_sleep_clock PIO setting
+//&2579 = 0000
+
+// PSKEY_DEEP_SLEEP_STATE
+&0229 = 0003
+// PSKEY_DEEP_SLEEP_USE_EXTERNAL
+&03c3 = 0001
+
+&2578 = 000f
+
+&216d = 0006
+&2175 = 0000 ffff ffff eeee eeee
+&01f6 = 001d
+
+// PSKEY_CLOCK_REQUEST_ENABLE : PIQ3 function as OR gate input is disable
+&0246 = 0002
+
+//////////////////////// Coex scheme ////////////////////////////
+//PSKEY_COEX_SCHEME : UNITY 3
+//&2480 = 0003
+
+// PSKEY_COEX_PIO_UNITY_3_BT_ACTIVE to set BT_ACTIVE : PIO1 is assigned
+//&2483 = 0001 0001
+
+// PSKEY_COEX_PIO_UNITY_3_BT_STATUS to set BT_STATUS: PIO4 is  assigned
+//&2484 = 0004 0001
+
+// PSKEY_COEX_PIO_UNITY_3_WLAN_DENY to set BT_WLAN_DENY: PIO9 is assigned
+//&2485 = 0009 0001
+
+//&2488 = 0001 0001 0001 0001 0001 0001 0001 0001 0001 0001 0001 0008 0001 0001 0001 0001 0001
+//////////////////////// Coex scheme ////////////////////////////
+
+//PSKEY_UART_HOST_WAKE_SIGNAL
+// PIO= 3 , positive
+&01ca = 0031
+
+//PSKEY_UART_HOST_WAKE
+//enable, sleep delay = 1s , sig duration = 5ms . pause length = 200ms
+&01c7 = 0001 03e8 0005 0200
+
