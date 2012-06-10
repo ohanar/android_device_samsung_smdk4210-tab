@@ -282,13 +282,6 @@ on boot
     setprop status.battery.level_raw  50
     setprop status.battery.level_scale 9
 
-# Vibetonz
-#service immvibed /system/bin/immvibed
-#    class core
-#    user shell
-#    group shell
-#    oneshot
-
 # Wifi
 service wpa_supplicant /system/bin/wpa_supplicant \
         -Dnl80211 -iwlan0 -c/data/misc/wifi/wpa_supplicant.conf
