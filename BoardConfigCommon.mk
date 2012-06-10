@@ -21,8 +21,7 @@ TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
 TARGET_ARCH_VARIANT := armv7-a-neon
 TARGET_ARCH_VARIANT_CPU := cortex-a9
-ARCH_ARM_HAVE_NEON := true
-ARCH_ARM_HAVE_TLS_REGISTER := true
+TARGET_ARCH_VARIANT_FPU := neon
 EXYNOS4210_ENHANCEMENTS := true
 EXYNOS4210_TABLET := true
 
@@ -114,6 +113,7 @@ WIFI_DRIVER_LOADER_DELAY         := 1000000
 
 # Charging Mode (LPM)
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
+BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Kernel
 TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210

@@ -63,6 +63,11 @@ PRODUCT_PACKAGES += \
     libs5pjpeg \
     libfimg
 
+# Charger
+PRODUCT_PACKAGES += \
+    charger \
+    charger_res_images
+
 # MFC API
 PRODUCT_PACKAGES += \
     libsecmfcapi
