@@ -1,5 +1,3 @@
-import lpm.fstab.rc
-
 on early-init
     start ueventd
 
@@ -18,7 +16,6 @@ on init
     mkdir /tmp
     mkdir /dbdata
     mkdir /mnt 0775 root root
-    mkdir /mnt/.lfs 0775 root root
 
 on boot
 
@@ -43,11 +40,8 @@ service adbd /sbin/adbd
     disabled
 
 service charger /charger
-    class charger
+    class default
     user root
-
-on charger
-    class_start charger
 
 # Always start adbd on userdebug and eng builds
 # In recovery, always run adbd as root.
