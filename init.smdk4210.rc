@@ -35,8 +35,6 @@ on fs
 
     mount ext4 /dev/block/mmcblk0p1 /efs nosuid nodev noatime wait
 
-    mkdir /efs/bluetooth 0775 radio system
-    mkdir /efs/wifi      0775 radio system
     chown radio system   /efs/bluetooth
     chown radio system   /efs/wifi
     chmod 0775           /efs/bluetooth
@@ -44,7 +42,6 @@ on fs
 
     mkdir /data/misc/vpn/profiles 0770 system system
     mkdir /data/misc/radio        0775 radio  system
-    chmod 0770 /data/misc/wifi
 
 on post-fs
 
@@ -107,10 +104,6 @@ on post-fs-data
     chmod 0775                 /system/lib/drm
 
     # DivX DRM
-    mkdir /efs/.files        0775
-    mkdir /efs/.files/.dx1   0775 media system
-    mkdir /efs/.files/.dm33  0775 media system
-    mkdir /efs/.files/.mp301 0775 media system
     chown media system       /efs/.files/.dx1
     chown media system       /efs/.files/.dm33
     chown media system       /efs/.files/.mp301
