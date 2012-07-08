@@ -25,19 +25,48 @@ PRODUCT_COPY_FILES += \
 
 # Audio
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/asound.conf:system/etc/asound.conf
+    $(LOCAL_PATH)/configs/etc/asound.conf:system/etc/asound.conf \
+    $(LOCAL_PATH)/configs/etc/audio/LVVEFS_Rx_Configuration.txt:system/etc/audio/LVVEFS_Rx_Configuration.txt \
+    $(LOCAL_PATH)/configs/etc/audio/LVVEFS_Tx_Configuration.txt:system/etc/audio/LVVEFS_Tx_Configuration.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Rx_ControlParams_BLUETOOTH_HEADSET.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_EARPIECE_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_SPEAKER_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Rx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt:system/etc/audio/Tx_ControlParams_BLUETOOTH_HEADSET.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_EARPIECE_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_SPEAKER_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADPHONE_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt:system/etc/audio/Tx_ControlParams_WIRED_HEADSET_WIDEBAND.txt \
+    $(LOCAL_PATH)/configs/usr/share/alsa/alsa.conf:system/usr/share/alsa/alsa.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/cards/aliases.conf:system/usr/share/alsa/cards/aliases.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/center_lfe.conf:system/usr/share/alsa/pcm/center_lfe.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/default.conf:system/usr/share/alsa/pcm/default.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/dmix.conf:system/usr/share/alsa/pcm/dmix.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/dpl.conf:system/usr/share/alsa/pcm/dpl.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/dsnoop.conf:system/usr/share/alsa/pcm/dsnoop.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/front.conf:system/usr/share/alsa/pcm/front.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/iec958.conf:system/usr/share/alsa/pcm/iec958.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/modem.conf:system/usr/share/alsa/pcm/modem.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/rear.conf:system/usr/share/alsa/pcm/rear.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/side.conf:system/usr/share/alsa/pcm/side.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/surround40.conf:system/usr/share/alsa/pcm/surround40.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/surround41.conf:system/usr/share/alsa/pcm/surround41.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/surround50.conf:system/usr/share/alsa/pcm/surround50.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/surround51.conf:system/usr/share/alsa/pcm/surround51.conf \
+    $(LOCAL_PATH)/configs/usr/share/alsa/pcm/surround71.conf:system/usr/share/alsa/pcm/surround71.conf
 
 # Vold and Storage
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/vold.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/configs/etc/vold.fstab:system/etc/vold.fstab
 
 # Bluetooth configuration file
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/PSConfig_8811.psr:system/etc/PSConfig_8811.psr
+    $(LOCAL_PATH)/configs/etc/PSConfig_8811.psr:system/etc/PSConfig_8811.psr
 
 # Wifi
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
+    $(LOCAL_PATH)/configs/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf
 
 PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
@@ -45,9 +74,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Gps
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/gps.xml:system/etc/gps.xml \
-    $(LOCAL_PATH)/configs/sirfgps.conf:system/etc/sirfgps.conf
+    $(LOCAL_PATH)/configs/etc/gps.conf:system/etc/gps.conf \
+    $(LOCAL_PATH)/configs/etc/gps.xml:system/etc/gps.xml \
+    $(LOCAL_PATH)/configs/etc/sirfgps.conf:system/etc/sirfgps.conf
 
 # Packages
 PRODUCT_PACKAGES += \
@@ -175,7 +204,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml
 
 # Feature live wallpaper
 PRODUCT_COPY_FILES += \
