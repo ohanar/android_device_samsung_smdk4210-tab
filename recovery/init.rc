@@ -22,6 +22,10 @@ on init
     mkdir /preload
     mount /tmp /tmp tmpfs
 
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
+    write /sys/class/android_usb/android0/iProduct $ro.product.model
+
 on boot
 # Permissions for mDNIe
     chown system media_rw /sys/class/mdnie/mdnie/mode
@@ -38,15 +42,6 @@ on boot
 service ueventd /sbin/ueventd
     critical
 
-service console /sbin/sh
-    class core
-    console
-    disabled
-    group log
-
-on property:ro.debuggable=1
-    start console
-
 service recovery /sbin/recovery
 
 service adbd /sbin/adbd recovery
@@ -60,9 +55,6 @@ on property:ro.debuggable=1
     write /sys/class/android_usb/android0/idProduct 6860
     write /sys/class/android_usb/android0/functions adb
     write /sys/class/android_usb/android0/enable 1
-    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
-    write /sys/class/android_usb/android0/iProduct $ro.product.model
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
     start adbd
     setprop service.adb.root 1
 
