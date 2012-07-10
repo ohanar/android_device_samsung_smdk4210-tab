@@ -119,7 +119,7 @@ BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_char
 BOARD_SUPPRESS_EMMC_WIPE := true
 
 # Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210
+TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210-tab
 
 CLEAN_MODULES:
 	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`

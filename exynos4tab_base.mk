@@ -74,6 +74,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Gps
 PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/configs/etc/gps.cer:system/etc/gps.cer \
     $(LOCAL_PATH)/configs/etc/gps.conf:system/etc/gps.conf \
     $(LOCAL_PATH)/configs/etc/gps.xml:system/etc/gps.xml \
     $(LOCAL_PATH)/configs/etc/sirfgps.conf:system/etc/sirfgps.conf
