@@ -43,13 +43,14 @@ on fs
     mkdir /data/misc/vpn/profiles 0770 system system
     mkdir /data/misc/radio        0775 radio  system
 
-on post-fs
+on post-fs-data
 
-    # modules
+    # ismod kernel modules
     insmod /system/lib/modules/j4fs.ko
+
+    # mount param.lfs
     mount j4fs /dev/block/mmcblk0p4 /mnt/.lfs
 
-on post-fs-data
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw

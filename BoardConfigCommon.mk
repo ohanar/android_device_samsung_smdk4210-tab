@@ -110,6 +110,7 @@ WIFI_DRIVER_LOADER_DELAY         := 1000000
 
 # Charging Mode (LPM)
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
+BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Many shipped exynos4tab devices have defective eMMC chips (VYL00M fwrev 0x19)
 # Prevent usage of ERASE commands in recovery on these boards.
