@@ -80,9 +80,9 @@ BOARD_USE_YAMAHAPLAYER := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM = true
 
 # Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_CSR := true
-TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/exynos4tab-common/bluetooth.c
+#BOARD_HAVE_BLUETOOTH := true
+#BOARD_HAVE_BLUETOOTH_CSR := true
+#TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/exynos4tab-common/bluetooth.c
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 11
