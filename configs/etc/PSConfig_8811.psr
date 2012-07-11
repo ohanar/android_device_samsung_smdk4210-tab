@@ -37,6 +37,9 @@
 // patch_hardware_10, PSKEY_PATCH60 (0x2136, 8502), 15 words
 &2136 = 0002 8fde e500 cc15 0027 ff14 001b 4c26 0218 ff2b ff0e 9000 e118 00e2 1f06
 
+// patch_hardware_11, PSKEY_PATCH61 (0x2137, 8503), 55 words
+&2137 = 0002 b3fb ea00 de19 27e0 0317 01a0 07b7 02a0 08b7 08a0 0112 ff00 00c0 e181 1bf0 002b 0016 0318 ff2b ff0e 8100 5918 009e 0017 0318 ff2b ff0e 8100 9b18 009e 001b 0016 0318 ff2b ff0e 8100 3f18 009e ea00 de19 02e0 071a 0088 d9f0 0817 0027 0014 0218 ff2b ff0e b400 fe18 00e2 365f
+
 // explicit, PSKEY_ULP_RX_DEMOD_CONFIG (0x2184, 8580), 2 words
 &2184 = 2ca0 4836
 
@@ -104,7 +107,10 @@
 
 &216d = 0006
 &2175 = 0000 ffff ffff eeee eeee
-&01f6 = 001d
+&01f6 = 0013
+
+// explicit, PSKEY_BT_POWER_TABLE_V0 (0x241a, 9242), 40 words
+&241a = 2718 0050 2c28 0050 ec00 2918 0040 2e28 0040 f000 2818 0030 2c28 0030 f400 2818 0020 2c28 0020 f800 2918 0010 2d28 0010 fc00 2d1a 0000 302a 0000 0000 365c 0000 386c 0000 0400 3fff 0000 3fff 0000 0800
 
 // PSKEY_CLOCK_REQUEST_ENABLE : PIQ3 function as OR gate input is disable
 &0246 = 0002
@@ -130,6 +136,6 @@
 &01ca = 0031
 
 //PSKEY_UART_HOST_WAKE
-//enable, sleep delay = 1s , sig duration = 5ms . pause length = 200ms
-&01c7 = 0001 03e8 0005 0200
+//enable, sleep delay = 1s , sig duration = 5ms . pause length = 20ms
+&01c7 = 0001 03e8 0005 0020
 
