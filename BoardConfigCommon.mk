@@ -61,6 +61,7 @@ TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/exynos4tab-common/
 # Graphics
 BOARD_EGL_CFG := device/samsung/exynos4tab-common/configs/egl.cfg
 USE_OPENGL_RENDERER := true
+ENABLE_WEBGL := true
 
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
