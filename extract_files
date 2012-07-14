@@ -36,9 +36,7 @@ class VendorCreator:
         if len(args) == 1:
             self.blob_write(src, src)
         else:
-            for arg in args:
-                if arg == args[0]:
-                    continue
+            for arg in args[1:]:
                 self.blob_write(src, arg)
 
     def __call__(self, filename):
