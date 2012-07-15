@@ -15,6 +15,20 @@
 
 import datetime, os, subprocess
 
+def yield_lines(ss, basedir=None):
+    for f in ss:
+        if basedir is not None:
+            f = os.path.join(basedir, f)
+        if os.path.isdir(f):
+            for rootdir, subdirs, files in os.walk(f):
+                for s in yield_lines(files, rootdir):
+                    yield s
+        else:
+            for s in open(f, 'r'):
+                s = s.strip()
+                if s and not s.startswith('#'):
+                    yield s
+
 class VendorCreator:
 
     def __init__(self):
@@ -94,33 +108,19 @@ class VendorCreator:
     def _realpath(self, path):
         return os.path.realpath(os.path.join(self.cm_tree, path))
 
-    def _yieldlines(self, ss=None, basedir=None):
-        for f in ss:
-            if basedir is not None:
-                f = os.path.join(basedir, f)
-            if os.path.isdir(f):
-                for rootdir, subdirs, files in os.walk(f):
-                    for s in self._yieldlines(files, rootdir):
-                        yield s
-            else:
-                for s in open(f, 'r'):
-                    s = s.strip()
-                    if s and not s.startswith('#'):
-                        yield s
-
     def add(self, filename):
         self.srcs.append(
                 self._realpath(os.path.join(self.device_tree, filename))
         )
 
     def generate(self):
-        for s in self._yieldlines(self.srcs):
+        for s in yield_lines(self.srcs):
             self._add_prop(s.split(':'))
         self._blobs_mkfile_writer()
         self._base_mkfile_writer()
 
 vc0 = VendorCreator()
-vc0.add('proprietary_files')
+vc0.add('props_lists')
 
 if __name__ == '__main__':
     vc0.generate()
