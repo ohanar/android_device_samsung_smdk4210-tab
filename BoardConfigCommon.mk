@@ -27,10 +27,10 @@ TARGET_ARCH_VARIANT_FPU := neon
 ARCH_ARM_HAVE_TLS_REGISTER := true
 
 TARGET_BOARD_PLATFORM := exynos4
-TARGET_FAMILY := exynos4tab
+TARGET_FAMILY := smdk4210-tab
 TARGET_SOC := exynos4210
 TARGET_BOOTLOADER_BOARD_NAME := smdk4210
-TARGET_BOARD_INFO_FILE := device/samsung/exynos4tab-common/board-info.txt
+TARGET_BOARD_INFO_FILE := device/samsung/smdk4210-tab/board-info.txt
 
 COMMON_GLOBAL_CFLAGS += -DEXYNOS4210_ENHANCEMENTS
 COMMON_GLOBAL_CFLAGS += -DSURFACEFLINGER_FORCE_SCREEN_RELEASE
@@ -55,11 +55,11 @@ BOARD_FLASH_BLOCK_SIZE := 1024
 
 # Releasetools
 # TODO: fix standard tools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/exynos4tab-common/releasetools/c210_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/exynos4tab-common/releasetools/c210_img_from_target_files
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_img_from_target_files
 
 # Graphics
-BOARD_EGL_CFG := device/samsung/exynos4tab-common/configs/egl.cfg
+BOARD_EGL_CFG := device/samsung/smdk4210-tab/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 ENABLE_WEBGL := true
 
@@ -84,7 +84,7 @@ BOARD_HAS_SAMSUNG_VOLUME_BUG := true
 # Bluetooth
 #BOARD_HAVE_BLUETOOTH := true
 #BOARD_HAVE_BLUETOOTH_CSR := true
-#TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/exynos4tab-common/bluetooth.c
+#TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/smdk4210-tab/bluetooth.c
 
 # Vold
 BOARD_VOLD_MAX_PARTITIONS := 11
@@ -92,8 +92,8 @@ BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/samsung/exynos4tab-common/recovery/init.rc
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/exynos4tab-common/recovery/recovery_keys.c
+TARGET_RECOVERY_INITRC := device/samsung/smdk4210-tab/recovery/init.rc
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4210-tab/recovery/recovery_keys.c
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_HAS_SDCARD_INTERNAL := true
 BOARD_HAS_LARGE_FILESYSTEM := true
@@ -114,7 +114,7 @@ WIFI_DRIVER_LOADER_DELAY         := 1000000
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
 BOARD_BATTERY_DEVICE_NAME := "battery"
 
-# Many shipped exynos4tab devices have defective eMMC chips (VYL00M fwrev 0x19)
+# Many shipped smdk4210 devices have defective eMMC chips (VYL00M fwrev 0x19)
 # Prevent usage of ERASE commands in recovery on these boards.
 # This is redundant for our recovery since the kernel has MMC_CAP_ERASE
 # disabled for mshci.c, however it makes nightly ZIPs safer to flash
@@ -129,4 +129,4 @@ CLEAN_MODULES:
 
 TARGET_KERNEL_MODULES := CLEAN_MODULES
 
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/exynos4tab-common/bootimg.mk
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4210-tab/bootimg.mk

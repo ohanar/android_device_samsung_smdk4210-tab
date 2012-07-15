@@ -1,3 +1,3 @@
-ifeq ($(TARGET_FAMILY),exynos4tab)
+ifeq ($(TARGET_FAMILY),smdk4210-tab)
     include $(all-subdir-makefiles)
 endif
