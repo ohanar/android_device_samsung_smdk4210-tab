@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import datetime, os, subprocess
+import datetime, inspect, os, subprocess
 
 def yield_lines(files, basedir=None):
     for f in files:
@@ -33,7 +33,9 @@ def yield_lines(files, basedir=None):
 class VendorCreator:
 
     def __init__(self):
-        self.cm_tree, self.filename = os.path.split(os.path.realpath(__file__))
+        self.cm_tree, self.filename = os.path.split(
+                os.path.realpath(inspect.stack()[1][1])
+                )
         self.cm_tree, self.device = os.path.split(self.cm_tree)
         self.cm_tree, self.manufacturer = os.path.split(self.cm_tree)
         self.cm_tree = os.path.dirname(self.cm_tree)
