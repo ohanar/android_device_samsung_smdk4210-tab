@@ -162,41 +162,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
     $(LOCAL_PATH)/usr/keylayout/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
 
-# Wifi Firmware
-# from kernel.org
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/endpointping.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/endpointping.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/bdata.SD32.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/bdata.SD32.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/bdata.SD31.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/bdata.SD31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/otp.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/otp.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/data.patch.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/data.patch.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/athwlan.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/athwlan.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003.1/hw2.1.1/bdata.WB31.bin:system/etc/firmware/ath6k/AR6003.1/hw2.1.1/bdata.WB31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/bdata.SD32.bin:system/etc/firmware/ath6k/AR6003/hw2.0/bdata.SD32.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/otp.bin.z77:system/etc/firmware/ath6k/AR6003/hw2.0/otp.bin.z77 \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/bdata.SD31.bin:system/etc/firmware/ath6k/AR6003/hw2.0/bdata.SD31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/athwlan.bin.z77:system/etc/firmware/ath6k/AR6003/hw2.0/athwlan.bin.z77 \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/data.patch.bin:system/etc/firmware/ath6k/AR6003/hw2.0/data.patch.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.0/bdata.WB31.bin:system/etc/firmware/ath6k/AR6003/hw2.0/bdata.WB31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/endpointping.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/endpointping.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/bdata.SD32.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/bdata.SD32.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/bdata.SD31.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/bdata.SD31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/fw-2.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/fw-2.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/otp.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/otp.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/data.patch.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/data.patch.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/athwlan.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/athwlan.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw2.1.1/bdata.WB31.bin:system/etc/firmware/ath6k/AR6003/hw2.1.1/bdata.WB31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/bdata.SD32.bin:system/etc/firmware/ath6k/AR6003/hw1.0/bdata.SD32.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/otp.bin.z77:system/etc/firmware/ath6k/AR6003/hw1.0/otp.bin.z77 \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/bdata.SD31.bin:system/etc/firmware/ath6k/AR6003/hw1.0/bdata.SD31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/athwlan.bin.z77:system/etc/firmware/ath6k/AR6003/hw1.0/athwlan.bin.z77 \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/data.patch.bin:system/etc/firmware/ath6k/AR6003/hw1.0/data.patch.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6003/hw1.0/bdata.WB31.bin:system/etc/firmware/ath6k/AR6003/hw1.0/bdata.WB31.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6002/eeprom.data:system/etc/firmware/ath6k/AR6002/eeprom.data \
-    $(LOCAL_PATH)/firmware/ath6k/AR6002/athwlan.bin.z77:system/etc/firmware/ath6k/AR6002/athwlan.bin.z77 \
-    $(LOCAL_PATH)/firmware/ath6k/AR6002/eeprom.bin:system/etc/firmware/ath6k/AR6002/eeprom.bin \
-    $(LOCAL_PATH)/firmware/ath6k/AR6002/data.patch.hw2_0.bin:system/etc/firmware/ath6k/AR6002/data.patch.hw2_0.bin
-
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PROPERTY_OVERRIDES += \
