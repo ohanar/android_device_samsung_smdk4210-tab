@@ -78,8 +78,8 @@ on post-fs-data
     chown wifi wifi /data/misc/wifi
     chown wifi wifi /data/misc/wifi/sockets
     chown wifi wifi /data/misc/wifi/wpa_supplicant.conf
-    chown 0770      /data/misc/dhcp
-    chown 0770      /data/misc/dhcpcd
+    chmod 0770      /data/misc/dhcp
+    chmod 0770      /data/misc/dhcpcd
     chmod 0770      /system/etc/wifi
     chmod 0660      /system/etc/wifi/wpa_supplicant.conf
     chmod 0770      /data/misc/wifi
@@ -285,8 +285,7 @@ service wpa_supplicant /system/bin/wpa_supplicant \
     disabled
     oneshot
 
-service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL wlan0
-    group system dhcp
+service dhcpcd_wlan0 /system/bin/dhcpcd -ABKL
     class main
     disabled
     oneshot
