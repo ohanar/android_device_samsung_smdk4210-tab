@@ -1,0 +1,2 @@
+system/lib/hw/gps.exynos4.so
+system/bin/gpsd

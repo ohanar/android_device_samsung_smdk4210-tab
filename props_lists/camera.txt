@@ -1,0 +1,2 @@
+system/lib/hw/camera.exynos4.so
+system/lib/libsecnativefeature.so

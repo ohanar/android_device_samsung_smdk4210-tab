@@ -1,0 +1,4 @@
+system/lib/libakm.so
+system/lib/libmllite.so
+system/lib/libmlplatform.so
+system/lib/libmpl.so

@@ -129,6 +129,3 @@ CLEAN_MODULES:
 TARGET_KERNEL_MODULES := CLEAN_MODULES
 
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/exynos4tab-common/bootimg.mk
-
-# Use the non-open-source parts, if they're present
--include vendor/samsung/exynos4tab-common/BoardConfigVendor.mk
