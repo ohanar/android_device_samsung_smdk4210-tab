@@ -99,7 +99,7 @@ class VendorCreator:
             if basedir is not None:
                 f = os.path.join(basedir, f)
             if os.path.isdir(f):
-                for rootdir,subdirs,files in os.walk(f):
+                for rootdir, subdirs, files in os.walk(f):
                     for s in self._yieldlines(files, rootdir):
                         yield s
             else:
