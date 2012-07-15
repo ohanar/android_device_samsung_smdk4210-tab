@@ -15,13 +15,13 @@
 
 import datetime, os, subprocess
 
-def yield_lines(ss, basedir=None):
-    for f in ss:
+def yield_lines(files, basedir=None):
+    for f in files:
         if basedir is not None:
             f = os.path.join(basedir, f)
         if os.path.isdir(f):
-            for rootdir, subdirs, files in os.walk(f):
-                for s in yield_lines(files, rootdir):
+            for rootdir, subdirs, subfiles in os.walk(f):
+                for s in yield_lines(subfiles, rootdir):
                     yield s
         else:
             for s in open(f, 'r'):
@@ -39,8 +39,7 @@ class VendorCreator:
         self.device_tree = os.path.join('device', self.manufacturer, self.device)
         self.vendor_tree = os.path.join('vendor', self.manufacturer, self.device)
         self.prop_dir = os.path.join(self.vendor_tree, 'props')
-        self.srcs = []; self.cp_dict = {}
-        self.boilerplate = \
+        self.srcs = set(); self.inst_maps = set(); self.boilerplate = \
 '''# Copyright (C) %s The CyanogenMod Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -66,13 +65,12 @@ class VendorCreator:
         blobs_mkfile = open(self._realpath(self.blobs_mkfile), 'w')
         blobs_mkfile.write(self.boilerplate)
         blobs_mkfile.write('PRODUCT_COPY_FILES += \\\n')
-        for src, paths in self.cp_dict.iteritems():
-            for path in paths:
-                blobs_mkfile.write('    ')
-                blobs_mkfile.write(os.path.join(self.prop_dir, src))
-                blobs_mkfile.write(':')
-                blobs_mkfile.write(path)
-                blobs_mkfile.write(' \\\n')
+        for src, path in self.inst_maps:
+            blobs_mkfile.write('    ')
+            blobs_mkfile.write(os.path.join(self.prop_dir, src))
+            blobs_mkfile.write(':')
+            blobs_mkfile.write(path)
+            blobs_mkfile.write(' \\\n')
         blobs_mkfile.write('\n')
         blobs_mkfile.close()
 
@@ -87,8 +85,8 @@ class VendorCreator:
         base_mkfile.write('\n')
 
     def _add_prop(self, args):
-        inc_src = not args[0]
-        src = None
+        src = args.pop(0)
+        inc_src = not (src and args)
         while not src:
             src = args.pop(0)
         cmd = ['adb', 'pull', src]
@@ -98,18 +96,16 @@ class VendorCreator:
             os.makedirs(out_dir)
         print(src)
         subprocess.call(cmd)
-        if src not in self.cp_dict:
-            self.cp_dict[src] = []
         if inc_src:
-            self.cp_dict[src].append(src)
+            self.inst_maps.add((src, src))
         for arg in args:
-            self.cp_dict[src].append(arg)
+            self.inst_maps.add((src, arg))
 
     def _realpath(self, path):
         return os.path.realpath(os.path.join(self.cm_tree, path))
 
     def add(self, filename):
-        self.srcs.append(
+        self.srcs.add(
                 self._realpath(os.path.join(self.device_tree, filename))
         )
 
