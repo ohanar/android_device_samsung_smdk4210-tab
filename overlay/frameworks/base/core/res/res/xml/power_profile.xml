@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
 **
-** Copyright 2012, The Android Open Source Project
+** Copyright 2009, The Android Open Source Project
 **
 ** Licensed under the Apache License, Version 2.0 (the "License")
 ** you may not use this file except in compliance with the License.
@@ -16,59 +16,67 @@
 ** limitations under the License.
 */
 -->
+
 <device name="Android">
-    <item name="none">0</item>
-    <item name="screen.on">247</item>
-    <item name="bluetooth.active">142</item>
-    <item name="bluetooth.on">0.3</item>
-    <item name="bluetooth.at">35690</item>
-    <item name="screen.full">630</item>
-    <item name="wifi.on">13</item>
-    <item name="wifi.active">120</item>
-    <item name="wifi.scan">220</item>
-    <item name="dsp.audio">88</item>
-    <item name="dsp.video">88</item>
-    <item name="radio.active">185</item>
+  <!-- All values are in mAh except as noted -->
 
-    <!-- The current consumed by the radio when it is scanning for a signal -->
-    <item name="gps.on">50</item>
-    <item name="radio.scanning">88</item>
+  <item name="none">0</item>
+  <item name="screen.on">109</item>
+  <item name="screen.full">677</item>
+  <item name="bluetooth.on">0.3</item>
+  <item name="bluetooth.active">23</item>
+  <item name="wifi.on">0.3</item>
+  <item name="wifi.active">61</item>
+  <item name="wifi.scan">125</item>
+  <item name="gps.on">0.7</item>
+  <item name="dsp.audio">52</item>
+  <item name="dsp.video">547</item>
 
-    <!-- Current consumed by the radio at different signal strengths, when paging -->
-    <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
-        <value>3.4</value>
-        <value>3.4</value>
-    </array>
+  <!-- Current consumed by the radio at different signal strengths, when paging -->
+  <array name="radio.on"> <!-- Strength 0 to BINS-1 -->
+      <value>2.9</value>
+      <value>3.1</value>
+  </array>
 
-    <!-- Different CPU speeds as reported in
+  <!-- Current consumed by the radio when it is scanning for a signal -->
+  <array name="radio.scanning"> <!-- Strength 0 to BINS-1 -->
+      <value>110</value>
+      <value>167</value>
+  </array>
+
+  <array name="radio.active"> <!-- Strength 0 to BINS-1 -->
+      <value>33</value>
+      <value>36</value>
+  </array>
+
+  <!-- Different CPU speeds as reported in
        /sys/devices/system/cpu/cpu0/cpufreq/stats/time_in_state -->
-    <array name="cpu.speeds">
-        <value>1600000</value>
-        <value>1400000</value>
-        <value>1200000</value>
-	    <value>1000000</value>
-        <value>800000</value>
-        <value>500000</value>
-        <value>200000</value>
-    </array>
+  <array name="cpu.speeds">
+      <value>1400000</value>
+      <value>1200000</value>
+      <value>1000000</value>
+      <value>800000</value>
+      <value>500000</value>
+      <value>200000</value>
+  </array>
 
-    <!-- Power consumption when CPU is idle -->
-    <item name="cpu.idle">1.4</item>
+  <!-- Power consumption when CPU is idle -->
+  <item name="cpu.idle">1.4</item>
 
-    <!-- Power consumption due to wake lock held -->
-    <item name="cpu.awake">44</item>
+  <!-- Power consumption due to wake lock held -->
+  <item name="cpu.awake">44</item>
 
-    <!-- Power consumption at different speeds -->
-    <array name="cpu.active">
-	    <value>230.0</value>
-        <value>200.0</value>
-	    <value>170.0</value>
-	    <value>140.0</value>
-        <value>113.7</value>
-        <value>82.1</value>
-        <value>55.4</value>
-    </array>
+  <!-- Power consumption at different speeds -->
+  <array name="cpu.active">
+      <value>200.0</value>
+      <value>170.0</value>
+      <value>140.0</value>
+      <value>113.7</value>
+      <value>82.1</value>
+      <value>55.4</value>
+  </array>
 
-    <!-- This is the battery capacity in mAh -->
-    <item name="battery.capacity">5100</item>
+  <!-- This is the battery capacity in mAh -->
+  <item name="battery.capacity">5100</item>
+
 </device>
