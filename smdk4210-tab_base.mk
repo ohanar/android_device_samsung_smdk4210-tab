@@ -144,24 +144,6 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/base/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 
-# idc
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/usr/idc/S3C24XX_TouchScreen.idc:system/usr/idc/S3C24XX_TouchScreen.idc \
-    $(LOCAL_PATH)/usr/idc/melfas_ts.idc:system/usr/idc/melfas_ts.idc \
-    $(LOCAL_PATH)/usr/idc/mxt224_ts_input.idc:system/usr/idc/mxt224_ts_input.idc \
-    $(LOCAL_PATH)/usr/idc/exynos4_ts.idc:system/usr/idc/exynos4_ts.idc \
-    $(LOCAL_PATH)/usr/idc/sec_e-pen.idc:system/usr/idc/sec_e-pen.idc \
-    $(LOCAL_PATH)/usr/idc/sec_touchscreen.idc:system/usr/idc/sec_touchscreen.idc
-
-# keylayout
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/usr/keylayout/Vendor_04e8_Product_7021.kl:system/usr/keylayout/Vendor_04e8_Product_7021.kl \
-    $(LOCAL_PATH)/usr/keylayout/samsung-keypad.kl:system/usr/keylayout/samsung-keypad.kl \
-    $(LOCAL_PATH)/usr/keylayout/sec_e-pen.kl:system/usr/keylayout/sec_e-pen.kl \
-    $(LOCAL_PATH)/usr/keylayout/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-    $(LOCAL_PATH)/usr/keylayout/sec_key.kl:system/usr/keylayout/sec_key.kl \
-    $(LOCAL_PATH)/usr/keylayout/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
-
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PROPERTY_OVERRIDES += \
