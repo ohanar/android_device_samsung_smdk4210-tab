@@ -130,3 +130,5 @@ CLEAN_MODULES:
 TARGET_KERNEL_MODULES := CLEAN_MODULES
 
 BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4210-tab/bootimg.mk
+
+DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4210-tab/overlay
