@@ -14,10 +14,6 @@
 # limitations under the License.
 #
 
-BOARD_USES_GENERIC_AUDIO := false
-
-TARGET_BOOTANIMATION_PRELOAD := true
-
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
 TARGET_CPU_SMP := true
@@ -42,26 +38,27 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_PROVIDES_INIT := true
 TARGET_PROVIDES_INIT_TARGET_RC := true
 
-BOARD_NAND_PAGE_SIZE := 4096
-BOARD_NAND_SPARE_SIZE := 128
+# Kernel
+TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210-tab
+TARGET_KERNEL_MODULES := CLEAN_MODULES
 BOARD_KERNEL_BASE := 0x40000000
+CLEAN_MODULES:
+	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
 
 # Filesystem
-TARGET_USERIMAGES_USE_EXT4 := true
+BOARD_NAND_PAGE_SIZE := 4096
+BOARD_NAND_SPARE_SIZE := 128
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 872415232
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 14138998784
 BOARD_FLASH_BLOCK_SIZE := 1024
-
-# Releasetools
-# TODO: fix standard tools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_img_from_target_files
+TARGET_USERIMAGES_USE_EXT4 := true
 
 # Graphics
 BOARD_EGL_CFG := device/samsung/smdk4210-tab/configs/egl.cfg
 USE_OPENGL_RENDERER := true
 ENABLE_WEBGL := true
+TARGET_BOOTANIMATION_PRELOAD := true
 
 # HWComposer
 BOARD_USES_HWCOMPOSER := true
@@ -77,6 +74,7 @@ BOARD_USE_METADATABUFFERTYPE := true
 BOARD_USES_MFC_FPS := true
 
 # Audio
+BOARD_USES_GENERIC_AUDIO := false
 BOARD_USE_YAMAHAPLAYER := true
 BOARD_USE_SAMSUNG_SEPARATEDSTREAM = true
 BOARD_HAS_SAMSUNG_VOLUME_BUG := true
@@ -91,16 +89,6 @@ BOARD_VOLD_MAX_PARTITIONS := 11
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
 
-# Recovery
-TARGET_RECOVERY_INITRC := device/samsung/smdk4210-tab/recovery/init.rc
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4210-tab/recovery/recovery_keys.c
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-BOARD_HAS_SDCARD_INTERNAL := true
-BOARD_HAS_LARGE_FILESYSTEM := true
-BOARD_HAS_NO_MISC_PARTITION := true
-BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_USES_MMCUTILS := true
-
 # Wifi
 BOARD_WLAN_DEVICE                := ath6kl
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
@@ -114,19 +102,18 @@ WIFI_DRIVER_LOADER_DELAY         := 1000000
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"
 BOARD_BATTERY_DEVICE_NAME := "battery"
 
+# Recovery
+TARGET_RECOVERY_INITRC := device/samsung/smdk4210-tab/recovery/init.rc
+BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4210-tab/recovery/recovery_keys.c
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+BOARD_HAS_SDCARD_INTERNAL := true
+BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_HAS_NO_MISC_PARTITION := true
+BOARD_HAS_NO_SELECT_BUTTON := true
+BOARD_USES_MMCUTILS := true
 # Many shipped smdk4210 devices have defective eMMC chips (VYL00M fwrev 0x19)
 # Prevent usage of ERASE commands in recovery on these boards.
 # This is redundant for our recovery since the kernel has MMC_CAP_ERASE
 # disabled for mshci.c, however it makes nightly ZIPs safer to flash
 # from kernels that still have MMC_CAP_ERASE enabled.
 BOARD_SUPPRESS_EMMC_WIPE := true
-
-# Kernel
-TARGET_KERNEL_SOURCE := kernel/samsung/smdk4210-tab
-
-CLEAN_MODULES:
-	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
-
-TARGET_KERNEL_MODULES := CLEAN_MODULES
-
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4210-tab/bootimg.mk
