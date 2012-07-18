@@ -54,9 +54,10 @@ BOARD_USERDATAIMAGE_PARTITION_SIZE := 14138998784
 BOARD_FLASH_BLOCK_SIZE := 1024
 
 # Releasetools
-# TODO: fix standard tools
-TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_ota_from_target_files
-TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/c210_img_from_target_files
+# TODO: use standard BOOTIMG_MK
+BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4210-tab/bootimg.mk
+TARGET_RELEASETOOL_OTA_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/ota_from_target_files
+TARGET_RELEASETOOL_IMG_FROM_TARGET_SCRIPT := ./device/samsung/smdk4210-tab/releasetools/img_from_target_files
 
 # Graphics
 BOARD_EGL_CFG := device/samsung/smdk4210-tab/configs/egl.cfg
@@ -128,5 +129,3 @@ CLEAN_MODULES:
 	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
 
 TARGET_KERNEL_MODULES := CLEAN_MODULES
-
-BOARD_CUSTOM_BOOTIMG_MK := device/samsung/smdk4210-tab/bootimg.mk
