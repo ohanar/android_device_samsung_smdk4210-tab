@@ -129,3 +129,5 @@ CLEAN_MODULES:
 	arm-eabi-strip --strip-debug `find $(KERNEL_MODULES_OUT) -name *.ko`
 
 TARGET_KERNEL_MODULES := CLEAN_MODULES
+
+DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4210-tab/overlay

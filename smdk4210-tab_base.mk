@@ -14,8 +14,6 @@
 # limitations under the License.
 #
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.smdk4210.rc:root/init.smdk4210.rc \
