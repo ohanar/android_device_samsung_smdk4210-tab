@@ -35,7 +35,7 @@ class VendorCreator:
     def __init__(self):
         self.cm_tree, self.filename = os.path.split(
                 os.path.realpath(inspect.stack()[1][1])
-                )
+        )
         self.cm_tree, self.device = os.path.split(self.cm_tree)
         self.cm_tree, self.manufacturer = os.path.split(self.cm_tree)
         self.cm_tree = os.path.dirname(self.cm_tree)
