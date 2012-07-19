@@ -295,13 +295,15 @@ service iprenew_wlan0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
-service bccmd /system/bin/bccmd -t bcsp -d /dev/ttySAC0 psload -r /etc/PSConfig_8811.psr
+service bccmd /system/bin/bccmd -t bcsp -d /dev/ttySAC0 \
+        -b 115200 psload -r /system/etc/PSConfig_8811.psr
     class main
     group bluetooth net_bt_admin
     disabled
     oneshot
 
-service hciattach /system/bin/hciattach -n -p /dev/ttySAC0 bcsp 3000000 flow
+service hciattach /system/bin/hciattach -n \
+        -p /dev/ttySAC0 bcsp 3000000 flow
     class main
     user bluetooth
     group bluetooth net_bt_admin
@@ -309,7 +311,7 @@ service hciattach /system/bin/hciattach -n -p /dev/ttySAC0 bcsp 3000000 flow
 
 # create virtual SD card at /mnt/sdcard, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
-# underlying files in /data/media wil be created with user and group media_rw (1023)
+# underlying files in /data/media wil be created with user and group media_rw
 service sdcard /system/bin/sdcard /data/media 1023 1023
     class late_start
 
