@@ -11,7 +11,6 @@ on early-init
     mkdir /mnt/usbdisk 0775 system system
     mkdir /efs         0771 radio  system
     mkdir /preload     0771 system system
-    mkdir /mnt/.lfs    0755 root   root
 
     # for backwards compatibility
     symlink /mnt/sdcard /sdcard
@@ -44,13 +43,6 @@ on fs
     mkdir /data/misc/radio        0775 radio  system
 
 on post-fs-data
-
-    # ismod kernel modules
-    insmod /system/lib/modules/j4fs.ko
-
-    # mount param.lfs
-    mount j4fs /dev/block/mmcblk0p4 /mnt/.lfs
-
 
     # we will remap this as /mnt/sdcard with the sdcard fuse tool
     mkdir /data/media 0775 media_rw media_rw
@@ -215,7 +207,6 @@ on post-fs-data
     # Permissions for uart_sel and usb_sel
     chown system radio /sys/class/sec/sec_switch/uart_sel
     chown system radio /sys/class/sec/sec_switch/usb_sel
-    chown system radio /mnt/.lfs/sw_sel
 
     # Permissions for OTG Test
     chown system radio /sys/class/host_notify/usb_otg/booster
