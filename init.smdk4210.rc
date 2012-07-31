@@ -1,4 +1,3 @@
-import init.smdk4210.fstab.rc
 import init.smdk4210.usb.rc
 
 on early-init
@@ -32,12 +31,13 @@ on early-init
 
 on fs
 
-    mount ext4 /dev/block/mmcblk0p1 /efs nosuid nodev noatime wait
+    # mount ext4 partitions
+    mount ext4 /dev/block/platform/dw_mmc/by-name/EFS /efs nosuid nodev noatime wait ro
+    mount ext4 /dev/block/platform/dw_mmc/by-name/FACTORYFS /system ro wait noatime
+    mount ext4 /dev/block/platform/dw_mmc/by-name/DATAFS /data nosuid nodev noatime wait crypt discard,noauto_da_alloc
+    mount ext4 /dev/block/platform/dw_mmc/by-name/CACHE /cache nosuid nodev noatime wait nomblk_io_submit,errors=panic
 
-    chown radio system   /efs/bluetooth
-    chown radio system   /efs/wifi
-    chmod 0775           /efs/bluetooth
-    chmod 0775           /efs/wifi
+    setprop ro.crypto.fuse_sdcard true
 
     mkdir /data/misc/vpn/profiles 0770 system system
     mkdir /data/misc/radio        0775 radio  system
