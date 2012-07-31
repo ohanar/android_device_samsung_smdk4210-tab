@@ -87,6 +87,7 @@ class VendorCreator:
         base_mkfile.write(self.blobs_mkfile)
         base_mkfile.write(')')
         base_mkfile.write('\n')
+        base_mkfile.close()
 
     def _add_prop(self, args):
         src = args.pop(0)
