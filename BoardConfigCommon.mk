@@ -107,14 +107,12 @@ BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_char
 BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Recovery
-TARGET_RECOVERY_INITRC := device/samsung/smdk4210-tab/recovery/init.rc
-BOARD_CUSTOM_RECOVERY_KEYMAPPING := ../../device/samsung/smdk4210-tab/recovery/recovery_keys.c
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-BOARD_HAS_SDCARD_INTERNAL := true
-BOARD_HAS_LARGE_FILESYSTEM := true
+BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
+BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
-BOARD_USES_MMCUTILS := true
 # Many shipped smdk4210 devices have defective eMMC chips (VYL00M fwrev 0x19)
 # Prevent usage of ERASE commands in recovery on these boards.
 # This is redundant for our recovery since the kernel has MMC_CAP_ERASE
