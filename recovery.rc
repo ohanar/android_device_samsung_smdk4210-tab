@@ -23,7 +23,6 @@ on init
     mount /tmp /tmp tmpfs
 
 on boot
-
     ifup lo
     hostname localhost
     domainname localdomain
