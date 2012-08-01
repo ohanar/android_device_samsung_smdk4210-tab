@@ -12,22 +12,9 @@ on init
 
     symlink /system/etc /etc
 
-    mkdir /efs
-    mkdir /boot
-    mkdir /recovery
-    mkdir /cache
     mkdir /system
-    mkdir /data
-    mkdir /preload
-    mkdir /emmc
-    mkdir /sdcard
-
-    write /sys/class/android_usb/android0/iSerial $ro.serialno
-    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
-    write /sys/class/android_usb/android0/iProduct $ro.product.model
 
 on boot
-
     # CPU Frequency Governor
     write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
 
@@ -36,6 +23,9 @@ on boot
     domainname localdomain
 
     class_start default
+
+on fs
+    mount ext4 /dev/block/platform/dw_mmc/by-name/FACTORYFS /system ro wait noatime
 
 service ueventd /sbin/ueventd
     critical
@@ -52,8 +42,9 @@ on property:ro.debuggable=1
     write /sys/class/android_usb/android0/idVendor 04e8
     write /sys/class/android_usb/android0/idProduct 6860
     write /sys/class/android_usb/android0/functions adb
-    write /sys/class/android_usb/android0/enable 1
-    start adbd
+    write /sys/class/android_usb/android0/iSerial $ro.serialno
+    write /sys/class/android_usb/android0/iManufacturer $ro.product.manufacturer
+    write /sys/class/android_usb/android0/iProduct $ro.product.model
     setprop service.adb.root 1
 
 # Restart adbd so it can run as root

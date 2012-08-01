@@ -135,16 +135,14 @@ on post-fs-data
     write /sys/class/sec/sec_key/wakeup_keys  102,116
 
     # Add permission for ATM.
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_charging_source
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_current_now
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_full_check
-    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_temp
+    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_lp_charging
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_temp_check
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_type
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/batt_vol
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/capacity
-    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/charging_source
-    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/fg_reg
-    chown system radio /sys/devices/platform/sec-battery/power_supply/battery/fg_soc
     chown system radio /sys/devices/platform/sec-battery/power_supply/battery/reset_soc
 
     chown system system /sys/class/backlight/panel/brightness
