@@ -37,6 +37,7 @@ TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
 
 DEVICE_PACKAGE_OVERLAYS += device/samsung/smdk4210-tab/overlay
+TARGET_SPECIFIC_HEADER_PATH += device/samsung/smdk4210-tab/overlay/include
 
 # Init
 TARGET_PROVIDES_INIT := true
