@@ -32,7 +32,7 @@ on early-init
 on fs
 
     # mount ext4 partitions
-    mount ext4 /dev/block/platform/dw_mmc/by-name/EFS /efs nosuid nodev noatime wait ro
+    mount ext4 /dev/block/platform/dw_mmc/by-name/EFS /efs nosuid nodev noatime wait rw
     mount ext4 /dev/block/platform/dw_mmc/by-name/FACTORYFS /system ro wait noatime
     mount ext4 /dev/block/platform/dw_mmc/by-name/DATAFS /data nosuid nodev noatime wait crypt discard,noauto_da_alloc
     mount ext4 /dev/block/platform/dw_mmc/by-name/CACHE /cache nosuid nodev noatime wait nomblk_io_submit,errors=panic
@@ -95,14 +95,6 @@ on post-fs-data
     mkdir /system/lib/drm 0775 root root
     chown root root            /system/lib/drm
     chmod 0775                 /system/lib/drm
-
-    # DivX DRM
-    chown media system       /efs/.files/.dx1
-    chown media system       /efs/.files/.dm33
-    chown media system       /efs/.files/.mp301
-    chmod 0775               /efs/.files/.dx1
-    chmod 0775               /efs/.files/.dm33
-    chmod 0775               /efs/.files/.mp301
 
     # terminal mode
     chown system system /sys/class/android_usb/android0/terminal_version
