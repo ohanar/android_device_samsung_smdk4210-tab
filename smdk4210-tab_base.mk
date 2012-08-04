@@ -81,6 +81,7 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     libaudiohw_legacy \
+    libsurfaceflinger_client \
     com.android.future.usb.accessory \
     librs_jni \
     SamsungServiceMode \
