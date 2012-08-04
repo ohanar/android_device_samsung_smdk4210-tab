@@ -111,7 +111,7 @@ BOARD_BATTERY_DEVICE_NAME := "battery"
 
 # Recovery
 TARGET_RECOVERY_INITRC := device/samsung/smdk4210-tab/recovery.rc
-BOARD_UMS_LUNFILE := "/sys/class/android_usb/f_mass_storage/lun/file"
+BOARD_UMS_LUNFILE := "/sys/class/android_usb/android0/f_mass_storage/lun/file"
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
 BOARD_USES_MMCUTILS := true
