@@ -6,6 +6,6 @@ system/lib/egl/libGLESv2_mali.so
 system/lib/libGLESv1_CM.so
 system/lib/libGLESv2.so
 system/lib/libGLESv2_dbg.so
-system/lib/libion.so
+system/lib/libion.so:libsamsungion
 system/lib/libMali.so
 system/lib/libUMP.so

@@ -32,17 +32,18 @@ def yield_lines(files, basedir=None):
 
 class VendorCreator:
 
-    def __init__(self):
+    def __init__(self, type='device'):
         self.cm_tree, self.filename = os.path.split(
                 os.path.realpath(inspect.stack()[1][1])
         )
-        self.cm_tree, self.device = os.path.split(self.cm_tree)
+        self.cm_tree, self.name = os.path.split(self.cm_tree)
         self.cm_tree, self.manufacturer = os.path.split(self.cm_tree)
         self.cm_tree = os.path.dirname(self.cm_tree)
-        self.device_tree = os.path.join('device', self.manufacturer, self.device)
-        self.vendor_tree = os.path.join('vendor', self.manufacturer, self.device)
+        self.device_tree = os.path.join('device', self.manufacturer, self.name)
+        self.vendor_tree = os.path.join('vendor', self.manufacturer, self.name)
         self.prop_dir = os.path.join(self.vendor_tree, 'props')
-        self.srcs = set(); self.inst_maps = set(); self.boilerplate = \
+        self.srcs = set(); self.inst_maps = set(); self.pkgs = set()
+        self.type = type; self.boilerplate = \
 '''#
 # Copyright (C) %s The CyanogenMod Project
 #
@@ -65,35 +66,58 @@ class VendorCreator:
 
     def _blobs_mkfile_writer(self):
         self.blobs_mkfile = \
-                os.path.join(self.vendor_tree, self.device+'_blobs.mk')
+                os.path.join(self.vendor_tree, self.name+'_blobs.mk')
         blobs_mkfile = open(self._realpath(self.blobs_mkfile), 'w')
         blobs_mkfile.write(self.boilerplate)
         blobs_mkfile.write('PRODUCT_COPY_FILES += \\\n')
         for src, path in self.inst_maps:
-            blobs_mkfile.write('    ')
-            blobs_mkfile.write(os.path.join(self.prop_dir, src))
-            blobs_mkfile.write(':')
-            blobs_mkfile.write(path)
-            blobs_mkfile.write(' \\\n')
+            blobs_mkfile.write(
+                    '    %s:%s \\\n'%(os.path.join(self.prop_dir, src), path)
+            )
         blobs_mkfile.write('\n')
         blobs_mkfile.close()
 
     def _base_mkfile_writer(self):
         self.base_mkfile = \
-                os.path.join(self.vendor_tree, self.device+'_base.mk')
+                os.path.join(self.vendor_tree, self.name+'_base.mk')
         base_mkfile = open(self._realpath(self.base_mkfile), 'w')
         base_mkfile.write(self.boilerplate)
-        base_mkfile.write('$(call inherit-product, ')
-        base_mkfile.write(self.blobs_mkfile)
-        base_mkfile.write(')')
+        base_mkfile.write('PRODUCT_PACKAGES += \\\n')
+        for pkg, src in self.pkgs:
+            base_mkfile.write('    %s \\\n'%pkg)
         base_mkfile.write('\n')
+        base_mkfile.write('$(call inherit-product, %s)\n'%self.blobs_mkfile)
         base_mkfile.close()
 
+    def _android_mk_writer(self):
+        self.android_mk = \
+                os.path.join(self.prop_dir, 'Android.mk')
+        android_mk = open(self._realpath(self.android_mk), 'w')
+        android_mk.write(self.boilerplate)
+        android_mk.write(
+                'ifeq ($(TARGET_%s), %s)\n'%(self.type.upper(), self.name)
+        )
+        android_mk.write('\n')
+        android_mk.write('LOCAL_PATH := $(call my-dir)\n')
+        for pkg, src in self.pkgs:
+            android_mk.write('\n')
+            android_mk.write('include $(CLEAR_VARS)\n')
+            android_mk.write('LOCAL_MODULE := %s\n'%pkg)
+            android_mk.write('LOCAL_MODULE_OWNER := samsung\n')
+            android_mk.write('LOCAL_SRC_FILES := %s\n'%src)
+            android_mk.write('LOCAL_MODULE_TAGS := optional\n')
+            android_mk.write('LOCAL_MODULE_SUFFIX := .so\n')
+            android_mk.write('LOCAL_MODULE_CLASS := SHARED_LIBRARIES\n')
+            android_mk.write('LOCAL_MODULE_PATH := $(TARGET_OUT)/lib\n')
+            android_mk.write('include $(BUILD_PREBUILT)\n')
+        android_mk.write('\n')
+        android_mk.write('endif\n')
+        android_mk.close()
+
     def _add_prop(self, args):
-        src = args.pop(0)
-        inc_src = not (src and args)
-        while not src:
-            src = args.pop(0)
+        src = args[0]
+        if len(args) > 1:
+            self.pkgs.add((args[1], src))
         cmd = ['adb', 'pull', src]
         cmd.append(os.path.join(self.cm_tree, self.prop_dir, src))
         out_dir = os.path.dirname(cmd[-1])
@@ -101,10 +125,13 @@ class VendorCreator:
             os.makedirs(out_dir)
         print(src)
         subprocess.call(cmd)
-        if inc_src:
+        tmp = os.path.split(src)
+        while tmp[0]:
+            tmp = os.path.split(tmp[0])
+        if tmp[1] == 'system':
             self.inst_maps.add((src, src))
-        for arg in args:
-            self.inst_maps.add((src, arg))
+        else:
+            self.inst_maps.add((src, os.path.join('root', src)))
 
     def _realpath(self, path):
         return os.path.realpath(os.path.join(self.cm_tree, path))
@@ -119,8 +146,9 @@ class VendorCreator:
             self._add_prop(s.split(':'))
         self._blobs_mkfile_writer()
         self._base_mkfile_writer()
+        self._android_mk_writer()
 
-vc0 = VendorCreator()
+vc0 = VendorCreator(type='family')
 vc0.add('props_lists')
 
 if __name__ == '__main__':

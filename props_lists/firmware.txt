@@ -1,5 +1,5 @@
 # Hardware Acceleration
-vendor/firmware/mfc_fw.bin:root/vendor/firmware/mfc_fw.bin
+vendor/firmware/mfc_fw.bin
 
 # Wifi
 system/etc/firmware/ath6k/AR6003/hw2.1.1/athtcmd_ram.bin

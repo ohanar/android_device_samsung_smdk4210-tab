@@ -10,7 +10,7 @@ system/lib/liblvvefs.so
 system/lib/libmediayamaha.so
 system/lib/libmediayamaha_jni.so
 system/lib/libmediayamaha_tuning_jni.so
-:system/lib/libmediayamahaservice.so:obj/lib/libmediayamahaservice.so
+system/lib/libmediayamahaservice.so:libmediayamahaservice
 system/lib/libsamsungAcousticeq.so
 system/lib/libsamsungSoundbooster.so
 system/lib/libyamahasrc.so
