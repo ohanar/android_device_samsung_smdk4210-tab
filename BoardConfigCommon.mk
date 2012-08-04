@@ -62,9 +62,10 @@ BOARD_FLASH_BLOCK_SIZE := 1024
 TARGET_USERIMAGES_USE_EXT4 := true
 
 # Vold
-BOARD_VOLD_MAX_PARTITIONS := 11
+BOARD_VOLD_MAX_PARTITIONS := 12
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
 BOARD_VOLD_DISC_HAS_MULTIPLE_MAJORS := true
+TARGET_USE_CUSTOM_LUN_FILE_PATH := "/sys/devices/platform/s3c-usbgadget/gadget/lun%d/file"
 
 # Graphics
 BOARD_EGL_CFG := device/samsung/smdk4210-tab/configs/egl.cfg
