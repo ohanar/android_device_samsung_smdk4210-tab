@@ -158,7 +158,8 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp
 
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/configs/etc/media_profiles.xml:system/etc/media_profiles.xml \
+    $(LOCAL_PATH)/configs/etc/media_codecs.xml:system/etc/media_codecs.xml
 
 # Feature live wallpaper
 PRODUCT_COPY_FILES += \
