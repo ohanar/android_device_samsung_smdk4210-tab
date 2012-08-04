@@ -109,10 +109,6 @@ on post-fs-data
     chmod 0775          /data/log
     chmod 0775          /data/anr
 
-    chmod 0662 /dev/log/radio
-    chmod 0662 /dev/log/main
-    chmod 0662 /dev/log/event
-
     # panorama directory creation
     mkdir /data/pxtmpdir 0775 system system
     chown system system /data/pxtmpdir
