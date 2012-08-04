@@ -80,6 +80,7 @@ PRODUCT_COPY_FILES += \
 # Packages
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
+    libaudiohw_legacy \
     com.android.future.usb.accessory \
     librs_jni \
     SamsungServiceMode \
