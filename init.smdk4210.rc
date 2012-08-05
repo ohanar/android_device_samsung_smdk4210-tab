@@ -25,10 +25,6 @@ on early-init
     chmod 0777           /dev/graphics/fb11
     chmod 0777           /sys/class/switch/hdmi
 
-# FIXME: permission for HDMI audio path
-    chown media audio /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
-    chmod 0777        /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
-
 on fs
 
     # mount ext4 partitions
@@ -121,6 +117,10 @@ on post-fs-data
     mkdir /data/pxtmpdir 0775 system system
     chown system system /data/pxtmpdir
     chmod 0775          /data/pxtmpdir
+
+    # permission for HDMI audio path
+    chown media audio /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
+    chmod 0777        /sys/class/hdmi_audio/hdmi_audio/hdmi_audio_set_ext
 
     # Permissions for gpio_keys.
     chown system radio /sys/class/sec/sec_key/wakeup_keys
