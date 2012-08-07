@@ -4,8 +4,8 @@ on early-init
     export EXTERNAL_STORAGE  /storage/sdcard0
     export SECONDARY_STORAGE /storage/sdcard1
 
-    mkdir /storage          0775 system system
-    mkdir /storage/sdcard0  0755 system system
+    mkdir /storage          0050 system sdcard_r
+    mkdir /storage/sdcard0  0000 system system
     mkdir /storage/sdcard1  0775 system system
     mkdir /storage/usbdisk0 0775 system system
     mkdir /efs              0771 radio  system
