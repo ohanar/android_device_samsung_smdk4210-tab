@@ -72,6 +72,13 @@
         <item>"bnep\\d"</item>
     </string-array>
 
+    <!-- Boolean indicating whether the wifi chipset has dual frequency band support -->
+    <bool translatable="false" name="config_wifi_dual_band_support">false</bool>
+
+    <!-- Device type information conforming to Annex B format in WiFi Direct specification.
+         The default represents a dual-mode smartphone -->
+    <string translatable="false" name="config_wifi_p2p_device_type">10-0050F204-5</string>
+
     <!-- Component name of the service providing network location support. -->
     <string name="config_networkLocationProvider">com.google.android.location.NetworkLocationProvider</string>
 
