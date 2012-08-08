@@ -14,7 +14,12 @@
      limitations under the License.
 -->
 
-<resources>
-    <!-- Whether or not the dock settings are to be displayed for this device when docked -->
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <!-- Whether or not the dock settings are to be displayed -->
     <bool name="has_dock_settings">true</bool>
+
+    <!-- Whether or not the led flashlight settings are to be displayed -->
+    <bool name="has_led_flash">true</bool>
+
 </resources>
