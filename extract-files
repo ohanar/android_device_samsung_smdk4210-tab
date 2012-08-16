@@ -66,7 +66,7 @@ class VendorCreator:
 
     def _blobs_mkfile_writer(self):
         self.blobs_mkfile = \
-                os.path.join(self.vendor_tree, self.name+'_blobs.mk')
+                os.path.join(self.vendor_tree, 'blobs.mk')
         blobs_mkfile = open(self._realpath(self.blobs_mkfile), 'w')
         blobs_mkfile.write(self.boilerplate)
         blobs_mkfile.write('PRODUCT_COPY_FILES += \\\n')
@@ -79,7 +79,7 @@ class VendorCreator:
 
     def _base_mkfile_writer(self):
         self.base_mkfile = \
-                os.path.join(self.vendor_tree, self.name+'_base.mk')
+                os.path.join(self.vendor_tree, 'vendor.mk')
         base_mkfile = open(self._realpath(self.base_mkfile), 'w')
         base_mkfile.write(self.boilerplate)
         base_mkfile.write('PRODUCT_PACKAGES += \\\n')
