@@ -14,6 +14,11 @@
 # limitations under the License.
 #
 
+# include a bunch of resources
+PRODUCT_AAPT_CONFIG := normal large xlarge mdpi tvdpi hdpi
+PRODUCT_AAPT_PREF_CONFIG := tvdpi
+PRODUCT_LOCALES += mdpi tvdpi hdpi
+
 # Init files
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.smdk4210.rc:root/init.smdk4210.rc \
