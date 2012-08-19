@@ -91,4 +91,7 @@
     <!-- If true, adds support for no delay A2DP in Samsung devices -->
     <bool name="config_noDelayInATwoDP">true</bool>
 
+    <!-- Separate software navigation bar required on this device. -->
+    <bool name="config_showNavigationBar">true</bool>
+
 </resources>
