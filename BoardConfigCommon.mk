@@ -100,13 +100,10 @@ BOARD_HAVE_BLUETOOTH_CSR := true
 TARGET_CUSTOM_BLUEDROID := ../../../device/samsung/smdk4210-tab/bluetooth.c
 
 # Wifi
-# Samsung modified the ath6kl kernel driver to make it behave like a bcmdhd
-BOARD_WLAN_DEVICE                := bcmdhd
+BOARD_WLAN_DEVICE                := ath6kl
 WPA_SUPPLICANT_VERSION           := VER_0_8_X
-BOARD_WPA_SUPPLICANT_DRIVER      := NL80211
-BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_bcmdhd
-BOARD_HOSTAPD_DRIVER             := NL80211
-BOARD_HOSTAPD_PRIVATE_LIB        := lib_driver_cmd_bcmdhd
+BOARD_WPA_SUPPLICANT_DRIVER      := WEXT
+BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
 WIFI_DRIVER_MODULE_NAME          := ath6kl
 WIFI_DRIVER_LOADER_DELAY         := 1000000
