@@ -53,6 +53,9 @@ on post-fs-data
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chmod 0660                /sys/class/rfkill/rfkill0/state
 
+    # lcd brightness
+    chown system system /sys/class/backlight/panel/brightness
+
     # mDNIe
     chown system media_rw /sys/class/mdnie/mdnie/background_effect
     chown system media_rw /sys/class/mdnie/mdnie/outdoor
