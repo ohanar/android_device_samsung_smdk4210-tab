@@ -19,18 +19,16 @@ package com.cyanogenmod.settings.device;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceManager;
 
-public class Hspa extends ListPreference implements OnPreferenceChangeListener {
+public class Hspa implements OnPreferenceChangeListener {
 
     private static final String FILE = "/system/app/SamsungServiceMode.apk";
     private Context mCtx;
 
     public Hspa(Context context) {
-        super(context);
         mCtx = context;
     }
 
@@ -39,7 +37,7 @@ public class Hspa extends ListPreference implements OnPreferenceChangeListener {
     }
 
     /**
-     * Restore hspa setting from SharedPreferences. (Write to kernel.)
+     * Restore HSPA setting from SharedPreferences. (Write to kernel.)
      * @param context       The context to read the SharedPreferences from
      */
     public static void restore(Context context) {
@@ -51,6 +49,7 @@ public class Hspa extends ListPreference implements OnPreferenceChangeListener {
         sendIntent(context, sharedPrefs.getString(DeviceSettings.KEY_HSPA, "23"));
     }
 
+    @Override
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         sendIntent(mCtx, (String) newValue);
         return true;
