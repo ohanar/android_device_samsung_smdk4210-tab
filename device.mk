@@ -76,11 +76,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.supplicant_scan_interval=45
 
 # Gps
+$(call inherit-product, device/common/gps/gps_us_supl.mk)
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/etc/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/etc/gps.conf:system/etc/gps.conf \
-    $(LOCAL_PATH)/configs/etc/gps.xml:system/etc/gps.xml \
-    $(LOCAL_PATH)/configs/etc/sirfgps.conf:system/etc/sirfgps.conf
+    $(LOCAL_PATH)/configs/etc/gps.xml:system/etc/gps.xml
 
 # Packages
 PRODUCT_PACKAGES += \
