@@ -33,7 +33,7 @@ public class Hspa implements OnPreferenceChangeListener {
     }
 
     public static boolean isSupported() {
-        return Utils.fileExists(FILE) && (System.getProperty("ro.telephony.ril_class") == "Smdk4210RIL");
+        return Utils.fileExists(FILE);
     }
 
     /**
