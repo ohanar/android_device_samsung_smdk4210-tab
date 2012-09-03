@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Galaxy Tab Settings</string>
+
+    <string name="category_screen_title">Screen</string>
+
+    <string name="mdnie_mode_title_head">Mode</string>
+    <string name="mdnie_mode_summary_head">Set the mDNIe Mode</string>
+    <string name="mdnie_scenario_title_head">Scenario</string>
+    <string name="mdnie_scenario_summary_head">Set the mDNIe Scenario</string>
+    <string name="mdnie_negative_title_head">Negative Mode</string>
+    <string name="mdnie_negative_summary_on">Colors are inverted</string>
+    <string name="mdnie_negative_summary_off">Colors are not inverted</string>
+    <string name="mdnie_outdoor_title_head">Outdoor Mode</string>
+    <string name="mdnie_outdoor_summary_on">Outdoor mode is enabled</string>
+    <string name="mdnie_outdoor_summary_off">Outdoor mode is disabled</string>
+
+    <string name="touchscreen_sensitivity_title_head">Touch sensitivity</string>
+    <string name="touchscreen_sensitivity_summary_head">Set touch panel sensitivity</string>
+
+    <string name="category_haptic_title">Haptic</string>
+    <string name="vibrator_intensity_title_head">Vibrator Intensity</string>
+    <string name="vibrator_intensity_summary_head">Set vibrator intensity</string>
+
+    <string name="category_radio_title">Radio</string>
+    <string name="hspa_title_head">HSPA</string>
+    <string name="hspa_summary_head">Enable HSDPA/HSUPA</string>
+
+    <string name="category_dock_title">Dock</string>
+    <string name="use_dock_audio_title_head">Use Dock USB Audio</string>
+    <string name="use_dock_audio_summary_on">Dock audio is enabled</string>
+    <string name="use_dock_audio_summary_off">Dock audio is disabled</string>
+</resources>
