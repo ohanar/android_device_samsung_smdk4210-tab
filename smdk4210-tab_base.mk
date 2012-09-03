@@ -82,7 +82,6 @@ PRODUCT_PACKAGES += \
     audio.a2dp.default \
     com.android.future.usb.accessory \
     librs_jni \
-    SamsungServiceMode \
     Torch \
     bccmd \
     Smdk4210TabSettings
