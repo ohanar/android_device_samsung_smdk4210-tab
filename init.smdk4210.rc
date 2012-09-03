@@ -58,15 +58,14 @@ on post-fs-data
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
     chmod 0660                /sys/class/rfkill/rfkill0/state
 
-    # lcd brightness
+    # lcd
     chown system system /sys/class/backlight/panel/brightness
 
     # mDNIe
-    chown system media_rw /sys/class/mdnie/mdnie/background_effect
-    chown system media_rw /sys/class/mdnie/mdnie/outdoor
-    chown system media_rw /sys/class/mdnie/mdnie/scenario
-    chown system media_rw /sys/class/mdnie/mdnie/negative
-    write /sys/class/mdnie/mdnie/scenario 4
+    chown system system /sys/class/mdnie/mdnie/mode
+    chown system system /sys/class/mdnie/mdnie/negative
+    chown system system /sys/class/mdnie/mdnie/outdoor
+    chown system system /sys/class/mdnie/mdnie/scenario
 
     # uart_sel and usb_sel
     chown system radio /sys/class/sec/sec_switch/uart_sel
@@ -83,6 +82,12 @@ on post-fs-data
     # torch
     chown system system /sys/devices/virtual/camera/rear/rear_flash
     chmod 0666          /sys/devices/virtual/camera/rear/rear_flash
+
+    # vibrator
+    chown system system /sys/vibrator/pwm_val
+
+    # touchscreen
+    chown system system /sys/class/sec/sec_touchscreen/tsp_threshold
 
     # device encryption
     setprop vold.post_fs_data_done 1

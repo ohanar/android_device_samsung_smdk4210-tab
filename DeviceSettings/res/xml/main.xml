@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:title="@string/category_screen_title"
+        android:key="category_screen">
+    
+        <!-- mDNIe Mode -->
+        <ListPreference
+            android:key="mdnie_mode"
+            android:title="@string/mdnie_mode_title_head"
+            android:summary="@string/mdnie_mode_summary_head"
+            android:entries="@array/mdnie_mode_entries"
+            android:entryValues="@array/mdnie_mode_entries_values"
+            android:defaultValue="1" />
+
+        <!-- mDNIe Scenario modes -->
+        <ListPreference
+            android:key="mdnie_scenario"
+            android:title="@string/mdnie_scenario_title_head"
+            android:summary="@string/mdnie_scenario_summary_head"
+            android:entries="@array/mdnie_scenario_entries"
+            android:entryValues="@array/mdnie_scenario_entries_values"
+            android:defaultValue="4" />
+
+        <!-- mDNIe Negative mode -->
+        <CheckBoxPreference
+            android:key="mdnie_negative"
+            android:title="@string/mdnie_negative_title_head"
+            android:summaryOn="@string/mdnie_negative_summary_on"
+            android:summaryOff="@string/mdnie_negative_summary_off" />
+
+        <!-- mDNIe Outdoor mode -->
+        <CheckBoxPreference
+            android:key="mdnie_outdoor"
+            android:title="@string/mdnie_outdoor_title_head"
+            android:summaryOn="@string/mdnie_outdoor_summary_on"
+            android:summaryOff="@string/mdnie_outdoor_summary_off" />
+
+        <ListPreference
+            android:key="touchscreen_sensitivity"
+            android:title="@string/touchscreen_sensitivity_title_head"
+            android:summary="@string/touchscreen_sensitivity_summary_head"
+            android:entries="@array/touchscreen_sensitivity_entries"
+            android:entryValues="@array/touchscreen_sensitivity_entries_values"
+            android:defaultValue="50" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_haptic_title"
+        android:key="category_haptic">
+
+        <ListPreference
+            android:key="vibrator_intensity"
+            android:title="@string/vibrator_intensity_title_head"
+            android:summary="@string/vibrator_intensity_summary_head"
+            android:entries="@array/vibrator_intensity_entries"
+            android:entryValues="@array/vibrator_intensity_entries_values"
+            android:defaultValue="50" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="@string/category_radio_title"
+        android:key="category_radio">
+
+        <!-- UMTS/HSDPA/HSUPA settings -->
+        <ListPreference
+            android:key="hspa"
+            android:title="@string/hspa_title_head"
+            android:summary="@string/hspa_summary_head"
+            android:entries="@array/hspa_entries"
+            android:entryValues="@array/hspa_entries_values"
+            android:defaultValue="0" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory 
+        android:title="@string/category_dock_title"
+        android:key="category_dock">
+
+        <!-- Use Dock Audio -->
+        <CheckBoxPreference
+            android:key="dock_audio"
+            android:title="@string/use_dock_audio_title_head"
+            android:summaryOn="@string/use_dock_audio_summary_on"
+            android:summaryOff="@string/use_dock_audio_summary_off" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

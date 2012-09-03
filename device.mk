@@ -91,7 +91,8 @@ PRODUCT_PACKAGES += \
     librs_jni \
     SamsungServiceMode \
     Torch \
-    bccmd
+    bccmd \
+    Smdk4210TabSettings
 
 # HAL
 PRODUCT_PACKAGES += \
