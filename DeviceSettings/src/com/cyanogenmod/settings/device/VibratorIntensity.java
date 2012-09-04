@@ -19,6 +19,7 @@ package com.cyanogenmod.settings.device;
 import java.io.IOException;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceManager;
@@ -26,6 +27,11 @@ import android.preference.PreferenceManager;
 public class VibratorIntensity implements OnPreferenceChangeListener {
 
     private static final String FILE = "/sys/vibrator/pwm_val";
+    private Vibrator mVib;
+
+    public VibratorIntensity(Context context) {
+        mVib = (Vibrator)context.getSystemService(Context.VIBRATOR_SERVICE);
+    }
 
     public static boolean isSupported() {
         return Utils.fileExists(FILE);
@@ -46,6 +52,7 @@ public class VibratorIntensity implements OnPreferenceChangeListener {
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Utils.writeValue(FILE, (String) newValue);
+        mVib.vibrate(750);
         return true;
     }
 

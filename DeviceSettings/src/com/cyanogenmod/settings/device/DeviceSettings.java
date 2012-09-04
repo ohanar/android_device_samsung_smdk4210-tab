@@ -102,7 +102,7 @@ public class DeviceSettings extends PreferenceActivity  {
 
         mVibratorIntensity = (ListPreference) findPreference(KEY_VIBRATOR_INTENSITY);
         if (VibratorIntensity.isSupported()) {
-            mVibratorIntensity.setOnPreferenceChangeListener(new VibratorIntensity());
+            mVibratorIntensity.setOnPreferenceChangeListener(new VibratorIntensity(this));
             disableCategory = false;
         } else
             category.removePreference(mVibratorIntensity);
