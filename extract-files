@@ -103,7 +103,7 @@ class VendorCreator:
             android_mk.write('\n')
             android_mk.write('include $(CLEAR_VARS)\n')
             android_mk.write('LOCAL_MODULE := %s\n'%pkg)
-            android_mk.write('LOCAL_MODULE_OWNER := samsung\n')
+            android_mk.write('LOCAL_MODULE_OWNER := %s\n'%self.manufacturer)
             android_mk.write('LOCAL_SRC_FILES := %s\n'%src)
             android_mk.write('LOCAL_MODULE_TAGS := optional\n')
             android_mk.write('LOCAL_MODULE_SUFFIX := .so\n')
