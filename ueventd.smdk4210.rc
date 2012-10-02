@@ -1,5 +1,6 @@
 /dev/mali                 0666   system     system
 /dev/ump                  0666   system     system
+/dev/ion                  0666   system     system
 /dev/exynos-mem           0666   system     system
 /dev/video0               0660   system     camera
 /dev/video1               0660   system     camera
