@@ -149,6 +149,10 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
     frameworks/native/data/etc/tablet_core_hardware.xml:system/etc/permissions/tablet_core_hardware.xml
 
+# modified keylayout for keyboard dock
+PRODUCT_COPY_FILES += \
+    device/samsung/smdk4210-tab/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
+
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PROPERTY_OVERRIDES += \

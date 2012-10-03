@@ -164,6 +164,11 @@ service iprenew_bnep0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
+# serial keyboard daemon
+service sec_keyboard /system/bin/sec_keyboard /dev/ttySAC2
+    class main
+    group system
+
 # create virtual SD card at /storage/sdcard0, based on the /data/media directory
 # daemon will drop to user/group system/media_rw after initializing
 # underlying files in /data/media wil be created with user and group media_rw
