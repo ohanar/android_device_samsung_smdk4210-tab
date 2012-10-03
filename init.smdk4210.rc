@@ -83,10 +83,6 @@ on post-fs-data
     chown system system /sys/devices/virtual/camera/rear/rear_flash
     chmod 0666          /sys/devices/virtual/camera/rear/rear_flash
 
-    # serial keyboard port
-    chown root system /dev/ttySAC2
-    chmod 0660 /dev/ttySAC2
-
     # vibrator
     chown system system /sys/vibrator/pwm_val
 

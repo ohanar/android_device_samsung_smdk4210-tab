@@ -22,12 +22,15 @@
 # bluetooth
 /dev/ttySAC0              0600   bluetooth  bluetooth
 
+# gps
+/dev/ttySAC1              0660   root       system
+
+# keyboard dock
+/dev/ttySAC2              0660   root       system
+
 # datarouter
 /dev/dun                  0660   system     system
 /dev/ttyGS0               0660   system     system
-
-# gps
-/dev/ttySAC1              0660   root       system
 
 # sensors
 /dev/akm8975              0660   system     system
