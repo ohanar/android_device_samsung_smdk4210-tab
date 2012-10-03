@@ -21,6 +21,8 @@
 
 # bluetooth
 /dev/ttySAC0              0600   bluetooth  bluetooth
+# dock keyboard
+/dev/ttySAC2              0660   root       system
 
 # datarouter
 /dev/dun                  0660   system     system
