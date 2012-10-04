@@ -151,7 +151,7 @@ PRODUCT_COPY_FILES += \
 
 # modified keylayout for keyboard dock
 PRODUCT_COPY_FILES += \
-    device/samsung/smdk4210-tab/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
+    $(LOCAL_PATH)/configs/usr/keylayout/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
 
 PRODUCT_CHARACTERISTICS := tablet
 
