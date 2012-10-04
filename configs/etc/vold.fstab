@@ -16,4 +16,4 @@
 dev_mount sdcard1 /storage/sdcard1 auto /devices/platform/s3c-sdhci.2/mmc_host/mmc1
 
 # USB host device 
-dev_mount usbdisk0 /storage/usbdisk0 auto /devices/platform/s3c_otghcd/usb
+dev_mount usbdisk0 /storage/usbdisk0 auto /devices/platform/s5p-ehci
