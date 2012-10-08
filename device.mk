@@ -153,6 +153,9 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/usr/keylayout/sec_keyboard.kl:system/usr/keylayout/sec_keyboard.kl
 
+PRODUCT_PACKAGES += \
+    sec_keyboard
+
 PRODUCT_CHARACTERISTICS := tablet
 
 PRODUCT_PROPERTY_OVERRIDES += \
