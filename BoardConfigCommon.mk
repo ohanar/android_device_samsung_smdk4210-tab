@@ -118,6 +118,7 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_ath6kl
 WIFI_DRIVER_MODULE_PATH          := "/system/lib/modules/ath6kl.ko"
 WIFI_DRIVER_MODULE_NAME          := ath6kl
 WIFI_DRIVER_LOADER_DELAY         := 1000000
+BOARD_HAVE_SAMSUNG_WIFI          := true
 
 # Charging Mode (LPM)
 BOARD_CHARGING_MODE_BOOTING_LPM := "/sys/class/power_supply/battery/batt_lp_charging"

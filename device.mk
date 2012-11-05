@@ -88,6 +88,7 @@ PRODUCT_PACKAGES += \
     com.android.future.usb.accessory \
     librs_jni \
     Torch \
+    macloader \
     bccmd \
     Smdk4210TabSettings
 
