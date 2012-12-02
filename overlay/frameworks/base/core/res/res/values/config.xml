@@ -99,12 +99,6 @@
         <item>"bnep\\d"</item>
     </string-array>
 
-    <!-- Package name providing network location support. -->
-    <string name="config_networkLocationProviderPackageName" translatable="false">com.google.android.location</string>
-
-    <!-- Package name providing geocoder API support. -->
-    <string name="config_geocodeProviderPackageName" translatable="false">com.google.android.location</string>
-
     <!-- Workaround for devices with broken keyboards -->
     <bool name="config_forceDisableHardwareKeyboard">true</bool>
 
