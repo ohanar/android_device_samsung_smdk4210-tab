@@ -20,6 +20,7 @@ import android.app.ActivityManagerNative;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.UserHandle;
 import android.preference.CheckBoxPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
@@ -43,13 +44,13 @@ public class DockAudio implements OnPreferenceChangeListener {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(context);
         Intent i = new Intent("com.cyanogenmod.settings.SamsungDock");
         i.putExtra("data", sharedPrefs.getBoolean(DeviceSettings.KEY_DOCK_AUDIO, false) ? "1" : "0");
-        ActivityManagerNative.broadcastStickyIntent(i, null);
+        ActivityManagerNative.broadcastStickyIntent(i, null, UserHandle.USER_ALL);
     }
 
     public boolean onPreferenceChange(Preference preference, Object newValue) {
         Intent i = new Intent("com.cyanogenmod.settings.SamsungDock");
         i.putExtra("data", ((CheckBoxPreference)preference).isChecked() ? "1" : "0");
-        ActivityManagerNative.broadcastStickyIntent(i, null);
+        ActivityManagerNative.broadcastStickyIntent(i, null, UserHandle.USER_ALL);
         return true;
     }
 
