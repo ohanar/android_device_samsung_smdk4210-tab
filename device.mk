@@ -94,6 +94,8 @@ PRODUCT_PACKAGES += \
 
 # HAL
 PRODUCT_PACKAGES += \
+    gralloc.exynos4 \
+    hwcomposer.exynos4 \
     lights.exynos4 \
     libhwconverter \
     libs5pjpeg \
