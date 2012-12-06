@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+#include <utils/String8.h>
 
 class SkDeviceFactory;
 class SkBitmap;
@@ -63,4 +64,9 @@ extern "C" void _ZN9SkTextBox10setSpacingEff(SkScalar left, SkScalar right) {
 }
 
 extern "C" void _ZN9SkTextBox4drawEP8SkCanvasPKcjRK7SkPaint(SkCanvas*, char const* foo1, unsigned int foo2, SkPaint const&) {
+}
+
+extern "C" void _ZN7android21SurfaceComposerClient13createSurfaceERKNS_7String8Eijjij(android::String8 const& foo1, int foo2, unsigned int foo3, unsigned int foo4, int foo5, unsigned int foo6) {
+}
+extern "C" void _ZN7android14SurfaceControl4showEi() {
 }
