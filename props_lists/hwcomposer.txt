@@ -1,4 +1,3 @@
-system/lib/hw/hwcomposer.smdk4210.so
 system/bin/bintvoutservice
 system/lib/libcec.so
 system/lib/libddc.so
