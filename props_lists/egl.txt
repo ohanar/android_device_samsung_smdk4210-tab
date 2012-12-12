@@ -3,4 +3,4 @@ system/lib/egl/libGLESv1_CM_mali.so
 system/lib/egl/libGLESv2_mali.so
 system/lib/libsecion.so:libsecion
 system/lib/libMali.so
-system/lib/libUMP.so
+system/lib/libUMP.so:libUMP

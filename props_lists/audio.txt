@@ -1,0 +1,4 @@
+system/lib/drm/libdrmwvmplugin.so
+system/lib/libWVStreamControlAPI_L3.so
+system/lib/libwvdrm_L3.so
+system/lib/libwvm.so
