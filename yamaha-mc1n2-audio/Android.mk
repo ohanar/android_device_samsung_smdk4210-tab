@@ -31,6 +31,10 @@ LOCAL_SHARED_LIBRARIES := \
 	libcutils \
 	libutils
 
+ifeq ($(BOARD_HAS_EARPIECE), true)
+  LOCAL_CFLAGS += -DHAS_EARPIECE
+endif
+
 LOCAL_PRELINK_MODULE := false
 LOCAL_MODULE_TAGS := optional
 

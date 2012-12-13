@@ -273,6 +273,7 @@ struct yamaha_mc1n2_audio_params_init smdk4210_params_init = {
 };
 
 struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
+#ifdef HAS_EARPIECE
 	{
 		.device = AUDIO_DEVICE_OUT_EARPIECE,
 		.direction = YAMAHA_MC1N2_AUDIO_DIRECTION_OUTPUT,
@@ -322,6 +323,7 @@ struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
 			.bDcCut = 0,
 		},
 	},
+#endif
 	{
 		.device = AUDIO_DEVICE_OUT_SPEAKER,
 		.direction = YAMAHA_MC1N2_AUDIO_DIRECTION_OUTPUT,
@@ -361,7 +363,8 @@ struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
 		.path_info.asMix[0].abSrcOnOff = { 0 },
 		.path_info.asBias[0].abSrcOnOff = { 0 },
 
-		.path_info.asSpOut[0].abSrcOnOff[5] = MCDRV_SRC5_DAC_M_ON,
+		.path_info.asSpOut[0].abSrcOnOff[5] = MCDRV_SRC5_DAC_L_ON,
+		.path_info.asSpOut[1].abSrcOnOff[5] = MCDRV_SRC5_DAC_R_ON,
 		.path_info.asDac[0].abSrcOnOff[6] = MCDRV_SRC6_MIX_ON,
 		.path_info.asMix[0].abSrcOnOff[3] = MCDRV_SRC3_DIR0_ON,
 
@@ -581,6 +584,7 @@ struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
 			.bDcCut = 0,
 		},
 	},
+#ifdef HAS_EARPIECE
 	{
 		.device = AUDIO_DEVICE_OUT_EARPIECE,
 		.direction = YAMAHA_MC1N2_AUDIO_DIRECTION_MODEM,
@@ -633,6 +637,7 @@ struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
 			.bDcCut = 0,
 		},
 	},
+#endif
 	{
 		.device = AUDIO_DEVICE_OUT_WIRED_HEADPHONE,
 		.direction = YAMAHA_MC1N2_AUDIO_DIRECTION_MODEM,
@@ -778,7 +783,8 @@ struct yamaha_mc1n2_audio_params_route smdk4210_params_routes[] = {
 		.path_info.asMix[0].abSrcOnOff = { 0 },
 		.path_info.asBias[0].abSrcOnOff = { 0 },
 
-		.path_info.asSpOut[0].abSrcOnOff[5] = MCDRV_SRC5_DAC_M_ON,
+		.path_info.asSpOut[0].abSrcOnOff[5] = MCDRV_SRC5_DAC_L_ON,
+		.path_info.asSpOut[1].abSrcOnOff[5] = MCDRV_SRC5_DAC_R_ON,
 		.path_info.asDac[0].abSrcOnOff[6] = MCDRV_SRC6_MIX_ON,
 		.path_info.asDit1[0].abSrcOnOff[4] = MCDRV_SRC4_ADC0_ON,
 		.path_info.asDac[0].abSrcOnOff[6] = MCDRV_SRC6_MIX_ON,
