@@ -45,3 +45,12 @@
 /dev/graphics/fb0         0660   system     graphics
 /dev/video14              0660   system     graphics
 /dev/video21              0660   system     graphics
+
+# i815 modem
+/dev/block/mmcblk0p4      0660   system     radio
+/dev/block/mmcblk0p8      0660   system     radio
+/dev/cdma_*               0660   system     radio
+/dev/link_pm              0660   system     radio
+/dev/lte_*                0660   system     radio
+/dev/modem_br             0660   system     radio
+/dev/ttyGS1               0660   system     radio
