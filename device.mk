@@ -14,6 +14,9 @@
 # limitations under the License.
 #
 
+$(call inherit-product, vendor/cm/config/common_full_tablet_wifionly.mk)
+$(call inherit-product-if-exists, vendor/samsung/smdk4210-tab/vendor.mk)
+
 # include a bunch of resources
 PRODUCT_AAPT_CONFIG := normal large xlarge mdpi tvdpi hdpi
 PRODUCT_LOCALES += mdpi tvdpi hdpi
@@ -25,11 +28,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/fstab.smdk4210:root/fstab.smdk4210 \
     $(LOCAL_PATH)/ueventd.smdk4210.rc:root/ueventd.smdk4210.rc
-
-# Audio
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/tinyalsa-audio.xml:system/etc/tinyalsa-audio.xml \
-    $(LOCAL_PATH)/configs/etc/audio_policy.conf:system/etc/audio_policy.conf
 
 # Vold and Storage
 PRODUCT_COPY_FILES += \
