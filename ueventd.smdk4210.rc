@@ -16,8 +16,6 @@
 /dev/HPD                  0666   system     system
 /dev/fimg2d               0666   system     graphics
 /dev/srp                  0666   system     audio
-/dev/block/mmcblk0p8      0660   system     radio
-/dev/rfkill               0666   root       root
 
 # bluetooth
 /dev/ttySAC0              0600   bluetooth  bluetooth
@@ -29,8 +27,9 @@
 /dev/ttySAC2              0660   root       system
 
 # datarouter
-/dev/dun                  0660   system     system
-/dev/ttyGS0               0660   system     system
+/dev/dun                  0660   system     radio
+/dev/ttyGS0               0660   system     radio
+/dev/block/mmcblk0p8      0660   system     radio
 
 # sensors
 /dev/akm8975              0660   system     system
@@ -38,17 +37,12 @@
 /dev/mpuirq               0660   system     system
 /dev/timerirq             0660   system     system
 
-# sound
-/dev/snd/*                0660   system     audio
-
 # TV Out
-/dev/graphics/fb0         0660   system     graphics
 /dev/video14              0660   system     graphics
 /dev/video21              0660   system     graphics
 
 # i815 modem
 /dev/block/mmcblk0p4      0660   system     radio
-/dev/block/mmcblk0p8      0660   system     radio
 /dev/cdma_*               0660   system     radio
 /dev/link_pm              0660   system     radio
 /dev/lte_*                0660   system     radio
