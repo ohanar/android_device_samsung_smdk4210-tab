@@ -49,8 +49,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Gps
 $(call inherit-product, device/common/gps/gps_us_supl.mk)
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/gps.cer:system/etc/gps.cer \
-    $(LOCAL_PATH)/configs/etc/gps.xml:system/etc/gps.xml
+    $(LOCAL_PATH)/configs/etc/gps.cer:system/etc/gps.cer
 
 # Packages
 PRODUCT_PACKAGES += \
