@@ -46,11 +46,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     wifi.interface=wlan0 \
     wifi.supplicant_scan_interval=45
 
-# Gps
-$(call inherit-product, device/common/gps/gps_us_supl.mk)
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/configs/etc/gps.cer:system/etc/gps.cer
-
 # Packages
 PRODUCT_PACKAGES += \
     libsurfaceflinger_client \
